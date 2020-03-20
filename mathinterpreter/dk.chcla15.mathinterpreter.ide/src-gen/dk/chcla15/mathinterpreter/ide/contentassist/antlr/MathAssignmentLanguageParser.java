@@ -32,19 +32,25 @@ public class MathAssignmentLanguageParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, MathAssignmentLanguageGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getExpOpAccess().getAlternatives(), "rule__ExpOp__Alternatives");
+			builder.put(grammarAccess.getMultDivOpAccess().getAlternatives(), "rule__MultDivOp__Alternatives");
+			builder.put(grammarAccess.getPlusMinusOpAccess().getAlternatives(), "rule__PlusMinusOp__Alternatives");
 			builder.put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
 			builder.put(grammarAccess.getMathExpAccess().getGroup(), "rule__MathExp__Group__0");
-			builder.put(grammarAccess.getExpAccess().getGroup(), "rule__Exp__Group__0");
-			builder.put(grammarAccess.getExpAccess().getGroup_1(), "rule__Exp__Group_1__0");
-			builder.put(grammarAccess.getExpOpAccess().getGroup_0(), "rule__ExpOp__Group_0__0");
-			builder.put(grammarAccess.getExpOpAccess().getGroup_1(), "rule__ExpOp__Group_1__0");
-			builder.put(grammarAccess.getExpOpAccess().getGroup_2(), "rule__ExpOp__Group_2__0");
-			builder.put(grammarAccess.getExpOpAccess().getGroup_3(), "rule__ExpOp__Group_3__0");
+			builder.put(grammarAccess.getPlusMinusExpAccess().getGroup(), "rule__PlusMinusExp__Group__0");
+			builder.put(grammarAccess.getPlusMinusExpAccess().getGroup_1(), "rule__PlusMinusExp__Group_1__0");
+			builder.put(grammarAccess.getMulOrDivExpAccess().getGroup(), "rule__MulOrDivExp__Group__0");
+			builder.put(grammarAccess.getMulOrDivExpAccess().getGroup_1(), "rule__MulOrDivExp__Group_1__0");
+			builder.put(grammarAccess.getMultDivOpAccess().getGroup_0(), "rule__MultDivOp__Group_0__0");
+			builder.put(grammarAccess.getMultDivOpAccess().getGroup_1(), "rule__MultDivOp__Group_1__0");
+			builder.put(grammarAccess.getPlusMinusOpAccess().getGroup_0(), "rule__PlusMinusOp__Group_0__0");
+			builder.put(grammarAccess.getPlusMinusOpAccess().getGroup_1(), "rule__PlusMinusOp__Group_1__0");
 			builder.put(grammarAccess.getPrimaryAccess().getGroup_0(), "rule__Primary__Group_0__0");
 			builder.put(grammarAccess.getPrimaryAccess().getGroup_1(), "rule__Primary__Group_1__0");
 			builder.put(grammarAccess.getMathExpAccess().getExpAssignment_2(), "rule__MathExp__ExpAssignment_2");
-			builder.put(grammarAccess.getExpAccess().getOperatorAssignment_1_1(), "rule__Exp__OperatorAssignment_1_1");
-			builder.put(grammarAccess.getExpAccess().getRightAssignment_1_2(), "rule__Exp__RightAssignment_1_2");
+			builder.put(grammarAccess.getPlusMinusExpAccess().getOperatorAssignment_1_1(), "rule__PlusMinusExp__OperatorAssignment_1_1");
+			builder.put(grammarAccess.getPlusMinusExpAccess().getRightAssignment_1_2(), "rule__PlusMinusExp__RightAssignment_1_2");
+			builder.put(grammarAccess.getMulOrDivExpAccess().getOperatorAssignment_1_1(), "rule__MulOrDivExp__OperatorAssignment_1_1");
+			builder.put(grammarAccess.getMulOrDivExpAccess().getRightAssignment_1_2(), "rule__MulOrDivExp__RightAssignment_1_2");
 			builder.put(grammarAccess.getPrimaryAccess().getValueAssignment_0_1(), "rule__Primary__ValueAssignment_0_1");
 			builder.put(grammarAccess.getPrimaryAccess().getExpAssignment_1_2(), "rule__Primary__ExpAssignment_1_2");
 		}

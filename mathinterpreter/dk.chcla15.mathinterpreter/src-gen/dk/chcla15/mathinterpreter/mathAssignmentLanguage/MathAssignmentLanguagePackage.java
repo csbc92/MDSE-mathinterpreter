@@ -151,44 +151,6 @@ public interface MathAssignmentLanguagePackage extends EPackage
   int EXP_OP_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl <em>Plus</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getPlus()
-   * @generated
-   */
-  int PLUS = 3;
-
-  /**
-   * The number of structural features of the '<em>Plus</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PLUS_FEATURE_COUNT = EXP_OP_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl <em>Minus</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getMinus()
-   * @generated
-   */
-  int MINUS = 4;
-
-  /**
-   * The number of structural features of the '<em>Minus</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MINUS_FEATURE_COUNT = EXP_OP_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MultImpl <em>Mult</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -196,7 +158,7 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getMult()
    * @generated
    */
-  int MULT = 5;
+  int MULT = 3;
 
   /**
    * The number of structural features of the '<em>Mult</em>' class.
@@ -215,7 +177,7 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getDiv()
    * @generated
    */
-  int DIV = 6;
+  int DIV = 4;
 
   /**
    * The number of structural features of the '<em>Div</em>' class.
@@ -225,6 +187,44 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @ordered
    */
   int DIV_FEATURE_COUNT = EXP_OP_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl <em>Plus</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getPlus()
+   * @generated
+   */
+  int PLUS = 5;
+
+  /**
+   * The number of structural features of the '<em>Plus</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLUS_FEATURE_COUNT = EXP_OP_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl <em>Minus</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getMinus()
+   * @generated
+   */
+  int MINUS = 6;
+
+  /**
+   * The number of structural features of the '<em>Minus</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MINUS_FEATURE_COUNT = EXP_OP_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl <em>Number</em>}' class.
@@ -412,26 +412,6 @@ public interface MathAssignmentLanguagePackage extends EPackage
   EClass getExpOp();
 
   /**
-   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus <em>Plus</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Plus</em>'.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus
-   * @generated
-   */
-  EClass getPlus();
-
-  /**
-   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus <em>Minus</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Minus</em>'.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus
-   * @generated
-   */
-  EClass getMinus();
-
-  /**
    * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult <em>Mult</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -450,6 +430,26 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @generated
    */
   EClass getDiv();
+
+  /**
+   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus <em>Plus</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Plus</em>'.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus
+   * @generated
+   */
+  EClass getPlus();
+
+  /**
+   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus <em>Minus</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Minus</em>'.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus
+   * @generated
+   */
+  EClass getMinus();
 
   /**
    * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number <em>Number</em>}'.
@@ -579,26 +579,6 @@ public interface MathAssignmentLanguagePackage extends EPackage
     EClass EXP_OP = eINSTANCE.getExpOp();
 
     /**
-     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl <em>Plus</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getPlus()
-     * @generated
-     */
-    EClass PLUS = eINSTANCE.getPlus();
-
-    /**
-     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl <em>Minus</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getMinus()
-     * @generated
-     */
-    EClass MINUS = eINSTANCE.getMinus();
-
-    /**
      * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MultImpl <em>Mult</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -617,6 +597,26 @@ public interface MathAssignmentLanguagePackage extends EPackage
      * @generated
      */
     EClass DIV = eINSTANCE.getDiv();
+
+    /**
+     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl <em>Plus</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getPlus()
+     * @generated
+     */
+    EClass PLUS = eINSTANCE.getPlus();
+
+    /**
+     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl <em>Minus</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MinusImpl
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getMinus()
+     * @generated
+     */
+    EClass MINUS = eINSTANCE.getMinus();
 
     /**
      * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl <em>Number</em>}' class.

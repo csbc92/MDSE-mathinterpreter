@@ -121,9 +121,108 @@ ruleExp returns [EObject current=null]
 @after {
 	leaveRule();
 }:
+	{
+		newCompositeNode(grammarAccess.getExpAccess().getPlusMinusExpParserRuleCall());
+	}
+	this_PlusMinusExp_0=rulePlusMinusExp
+	{
+		$current = $this_PlusMinusExp_0.current;
+		afterParserOrEnumRuleCall();
+	}
+;
+
+// Entry rule entryRulePlusMinusExp
+entryRulePlusMinusExp returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPlusMinusExpRule()); }
+	iv_rulePlusMinusExp=rulePlusMinusExp
+	{ $current=$iv_rulePlusMinusExp.current; }
+	EOF;
+
+// Rule PlusMinusExp
+rulePlusMinusExp returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
 	(
 		{
-			newCompositeNode(grammarAccess.getExpAccess().getPrimaryParserRuleCall_0());
+			newCompositeNode(grammarAccess.getPlusMinusExpAccess().getMulOrDivExpParserRuleCall_0());
+		}
+		this_MulOrDivExp_0=ruleMulOrDivExp
+		{
+			$current = $this_MulOrDivExp_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		(
+			(
+				{
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getPlusMinusExpAccess().getExpLeftAction_1_0(),
+						$current);
+				}
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPlusMinusExpAccess().getOperatorPlusMinusOpParserRuleCall_1_1_0());
+					}
+					lv_operator_2_0=rulePlusMinusOp
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPlusMinusExpRule());
+						}
+						set(
+							$current,
+							"operator",
+							lv_operator_2_0,
+							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.PlusMinusOp");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPlusMinusExpAccess().getRightMulOrDivExpParserRuleCall_1_2_0());
+					}
+					lv_right_3_0=ruleMulOrDivExp
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPlusMinusExpRule());
+						}
+						set(
+							$current,
+							"right",
+							lv_right_3_0,
+							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.MulOrDivExp");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)*
+	)
+;
+
+// Entry rule entryRuleMulOrDivExp
+entryRuleMulOrDivExp returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMulOrDivExpRule()); }
+	iv_ruleMulOrDivExp=ruleMulOrDivExp
+	{ $current=$iv_ruleMulOrDivExp.current; }
+	EOF;
+
+// Rule MulOrDivExp
+ruleMulOrDivExp returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getMulOrDivExpAccess().getPrimaryParserRuleCall_0());
 		}
 		this_Primary_0=rulePrimary
 		{
@@ -134,25 +233,25 @@ ruleExp returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElementAndSet(
-						grammarAccess.getExpAccess().getExpLeftAction_1_0(),
+						grammarAccess.getMulOrDivExpAccess().getExpLeftAction_1_0(),
 						$current);
 				}
 			)
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getMulOrDivExpAccess().getOperatorMultDivOpParserRuleCall_1_1_0());
 					}
-					lv_operator_2_0=ruleExpOp
+					lv_operator_2_0=ruleMultDivOp
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getExpRule());
+							$current = createModelElementForParent(grammarAccess.getMulOrDivExpRule());
 						}
 						set(
 							$current,
 							"operator",
 							lv_operator_2_0,
-							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
+							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.MultDivOp");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -160,12 +259,12 @@ ruleExp returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpAccess().getRightPrimaryParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getMulOrDivExpAccess().getRightPrimaryParserRuleCall_1_2_0());
 					}
 					lv_right_3_0=rulePrimary
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getExpRule());
+							$current = createModelElementForParent(grammarAccess.getMulOrDivExpRule());
 						}
 						set(
 							$current,
@@ -180,15 +279,15 @@ ruleExp returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleExpOp
-entryRuleExpOp returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getExpOpRule()); }
-	iv_ruleExpOp=ruleExpOp
-	{ $current=$iv_ruleExpOp.current; }
+// Entry rule entryRuleMultDivOp
+entryRuleMultDivOp returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getMultDivOpRule()); }
+	iv_ruleMultDivOp=ruleMultDivOp
+	{ $current=$iv_ruleMultDivOp.current; }
 	EOF;
 
-// Rule ExpOp
-ruleExpOp returns [EObject current=null]
+// Rule MultDivOp
+ruleMultDivOp returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -200,13 +299,59 @@ ruleExpOp returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getExpOpAccess().getPlusAction_0_0(),
+						grammarAccess.getMultDivOpAccess().getMultAction_0_0(),
+						$current);
+				}
+			)
+			otherlv_1='*'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getMultDivOpAccess().getAsteriskKeyword_0_1());
+			}
+		)
+		    |
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getMultDivOpAccess().getDivAction_1_0(),
+						$current);
+				}
+			)
+			otherlv_3='/'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getMultDivOpAccess().getSolidusKeyword_1_1());
+			}
+		)
+	)
+;
+
+// Entry rule entryRulePlusMinusOp
+entryRulePlusMinusOp returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPlusMinusOpRule()); }
+	iv_rulePlusMinusOp=rulePlusMinusOp
+	{ $current=$iv_rulePlusMinusOp.current; }
+	EOF;
+
+// Rule PlusMinusOp
+rulePlusMinusOp returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getPlusMinusOpAccess().getPlusAction_0_0(),
 						$current);
 				}
 			)
 			otherlv_1='+'
 			{
-				newLeafNode(otherlv_1, grammarAccess.getExpOpAccess().getPlusSignKeyword_0_1());
+				newLeafNode(otherlv_1, grammarAccess.getPlusMinusOpAccess().getPlusSignKeyword_0_1());
 			}
 		)
 		    |
@@ -214,41 +359,13 @@ ruleExpOp returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getExpOpAccess().getMinusAction_1_0(),
+						grammarAccess.getPlusMinusOpAccess().getMinusAction_1_0(),
 						$current);
 				}
 			)
 			otherlv_3='-'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getExpOpAccess().getHyphenMinusKeyword_1_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getExpOpAccess().getMultAction_2_0(),
-						$current);
-				}
-			)
-			otherlv_5='*'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getExpOpAccess().getAsteriskKeyword_2_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getExpOpAccess().getDivAction_3_0(),
-						$current);
-				}
-			)
-			otherlv_7='/'
-			{
-				newLeafNode(otherlv_7, grammarAccess.getExpOpAccess().getSolidusKeyword_3_1());
+				newLeafNode(otherlv_3, grammarAccess.getPlusMinusOpAccess().getHyphenMinusKeyword_1_1());
 			}
 		)
 	)

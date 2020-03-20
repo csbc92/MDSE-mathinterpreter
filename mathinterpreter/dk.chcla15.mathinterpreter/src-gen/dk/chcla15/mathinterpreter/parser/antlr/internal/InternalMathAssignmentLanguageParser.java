@@ -21,7 +21,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'result'", "'is'", "'+'", "'-'", "'*'", "'/'", "'('", "')'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_INT", "RULE_ID", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'result'", "'is'", "'*'", "'/'", "'+'", "'-'", "'('", "')'"
     };
     public static final int RULE_ID=5;
     public static final int RULE_WS=9;
@@ -233,11 +233,93 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
 
     // $ANTLR start "ruleExp"
-    // InternalMathAssignmentLanguage.g:117:1: ruleExp returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* ) ;
+    // InternalMathAssignmentLanguage.g:117:1: ruleExp returns [EObject current=null] : this_PlusMinusExp_0= rulePlusMinusExp ;
     public final EObject ruleExp() throws RecognitionException {
         EObject current = null;
 
-        EObject this_Primary_0 = null;
+        EObject this_PlusMinusExp_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalMathAssignmentLanguage.g:123:2: (this_PlusMinusExp_0= rulePlusMinusExp )
+            // InternalMathAssignmentLanguage.g:124:2: this_PlusMinusExp_0= rulePlusMinusExp
+            {
+
+            		newCompositeNode(grammarAccess.getExpAccess().getPlusMinusExpParserRuleCall());
+            	
+            pushFollow(FOLLOW_2);
+            this_PlusMinusExp_0=rulePlusMinusExp();
+
+            state._fsp--;
+
+
+            		current = this_PlusMinusExp_0;
+            		afterParserOrEnumRuleCall();
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleExp"
+
+
+    // $ANTLR start "entryRulePlusMinusExp"
+    // InternalMathAssignmentLanguage.g:135:1: entryRulePlusMinusExp returns [EObject current=null] : iv_rulePlusMinusExp= rulePlusMinusExp EOF ;
+    public final EObject entryRulePlusMinusExp() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_rulePlusMinusExp = null;
+
+
+        try {
+            // InternalMathAssignmentLanguage.g:135:53: (iv_rulePlusMinusExp= rulePlusMinusExp EOF )
+            // InternalMathAssignmentLanguage.g:136:2: iv_rulePlusMinusExp= rulePlusMinusExp EOF
+            {
+             newCompositeNode(grammarAccess.getPlusMinusExpRule()); 
+            pushFollow(FOLLOW_1);
+            iv_rulePlusMinusExp=rulePlusMinusExp();
+
+            state._fsp--;
+
+             current =iv_rulePlusMinusExp; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRulePlusMinusExp"
+
+
+    // $ANTLR start "rulePlusMinusExp"
+    // InternalMathAssignmentLanguage.g:142:1: rulePlusMinusExp returns [EObject current=null] : (this_MulOrDivExp_0= ruleMulOrDivExp ( () ( (lv_operator_2_0= rulePlusMinusOp ) ) ( (lv_right_3_0= ruleMulOrDivExp ) ) )* ) ;
+    public final EObject rulePlusMinusExp() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_MulOrDivExp_0 = null;
 
         EObject lv_operator_2_0 = null;
 
@@ -248,73 +330,73 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
         	enterRule();
 
         try {
-            // InternalMathAssignmentLanguage.g:123:2: ( (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* ) )
-            // InternalMathAssignmentLanguage.g:124:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* )
+            // InternalMathAssignmentLanguage.g:148:2: ( (this_MulOrDivExp_0= ruleMulOrDivExp ( () ( (lv_operator_2_0= rulePlusMinusOp ) ) ( (lv_right_3_0= ruleMulOrDivExp ) ) )* ) )
+            // InternalMathAssignmentLanguage.g:149:2: (this_MulOrDivExp_0= ruleMulOrDivExp ( () ( (lv_operator_2_0= rulePlusMinusOp ) ) ( (lv_right_3_0= ruleMulOrDivExp ) ) )* )
             {
-            // InternalMathAssignmentLanguage.g:124:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* )
-            // InternalMathAssignmentLanguage.g:125:3: this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )*
+            // InternalMathAssignmentLanguage.g:149:2: (this_MulOrDivExp_0= ruleMulOrDivExp ( () ( (lv_operator_2_0= rulePlusMinusOp ) ) ( (lv_right_3_0= ruleMulOrDivExp ) ) )* )
+            // InternalMathAssignmentLanguage.g:150:3: this_MulOrDivExp_0= ruleMulOrDivExp ( () ( (lv_operator_2_0= rulePlusMinusOp ) ) ( (lv_right_3_0= ruleMulOrDivExp ) ) )*
             {
 
-            			newCompositeNode(grammarAccess.getExpAccess().getPrimaryParserRuleCall_0());
+            			newCompositeNode(grammarAccess.getPlusMinusExpAccess().getMulOrDivExpParserRuleCall_0());
             		
             pushFollow(FOLLOW_5);
-            this_Primary_0=rulePrimary();
+            this_MulOrDivExp_0=ruleMulOrDivExp();
 
             state._fsp--;
 
 
-            			current = this_Primary_0;
+            			current = this_MulOrDivExp_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalMathAssignmentLanguage.g:133:3: ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )*
+            // InternalMathAssignmentLanguage.g:158:3: ( () ( (lv_operator_2_0= rulePlusMinusOp ) ) ( (lv_right_3_0= ruleMulOrDivExp ) ) )*
             loop1:
             do {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( ((LA1_0>=13 && LA1_0<=16)) ) {
+                if ( ((LA1_0>=15 && LA1_0<=16)) ) {
                     alt1=1;
                 }
 
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalMathAssignmentLanguage.g:134:4: () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) )
+            	    // InternalMathAssignmentLanguage.g:159:4: () ( (lv_operator_2_0= rulePlusMinusOp ) ) ( (lv_right_3_0= ruleMulOrDivExp ) )
             	    {
-            	    // InternalMathAssignmentLanguage.g:134:4: ()
-            	    // InternalMathAssignmentLanguage.g:135:5: 
+            	    // InternalMathAssignmentLanguage.g:159:4: ()
+            	    // InternalMathAssignmentLanguage.g:160:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
-            	    						grammarAccess.getExpAccess().getExpLeftAction_1_0(),
+            	    						grammarAccess.getPlusMinusExpAccess().getExpLeftAction_1_0(),
             	    						current);
             	    				
 
             	    }
 
-            	    // InternalMathAssignmentLanguage.g:141:4: ( (lv_operator_2_0= ruleExpOp ) )
-            	    // InternalMathAssignmentLanguage.g:142:5: (lv_operator_2_0= ruleExpOp )
+            	    // InternalMathAssignmentLanguage.g:166:4: ( (lv_operator_2_0= rulePlusMinusOp ) )
+            	    // InternalMathAssignmentLanguage.g:167:5: (lv_operator_2_0= rulePlusMinusOp )
             	    {
-            	    // InternalMathAssignmentLanguage.g:142:5: (lv_operator_2_0= ruleExpOp )
-            	    // InternalMathAssignmentLanguage.g:143:6: lv_operator_2_0= ruleExpOp
+            	    // InternalMathAssignmentLanguage.g:167:5: (lv_operator_2_0= rulePlusMinusOp )
+            	    // InternalMathAssignmentLanguage.g:168:6: lv_operator_2_0= rulePlusMinusOp
             	    {
 
-            	    						newCompositeNode(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_1_0());
+            	    						newCompositeNode(grammarAccess.getPlusMinusExpAccess().getOperatorPlusMinusOpParserRuleCall_1_1_0());
             	    					
             	    pushFollow(FOLLOW_4);
-            	    lv_operator_2_0=ruleExpOp();
+            	    lv_operator_2_0=rulePlusMinusOp();
 
             	    state._fsp--;
 
 
             	    						if (current==null) {
-            	    							current = createModelElementForParent(grammarAccess.getExpRule());
+            	    							current = createModelElementForParent(grammarAccess.getPlusMinusExpRule());
             	    						}
             	    						set(
             	    							current,
             	    							"operator",
             	    							lv_operator_2_0,
-            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
+            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.PlusMinusOp");
             	    						afterParserOrEnumRuleCall();
             	    					
 
@@ -323,29 +405,29 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
             	    }
 
-            	    // InternalMathAssignmentLanguage.g:160:4: ( (lv_right_3_0= rulePrimary ) )
-            	    // InternalMathAssignmentLanguage.g:161:5: (lv_right_3_0= rulePrimary )
+            	    // InternalMathAssignmentLanguage.g:185:4: ( (lv_right_3_0= ruleMulOrDivExp ) )
+            	    // InternalMathAssignmentLanguage.g:186:5: (lv_right_3_0= ruleMulOrDivExp )
             	    {
-            	    // InternalMathAssignmentLanguage.g:161:5: (lv_right_3_0= rulePrimary )
-            	    // InternalMathAssignmentLanguage.g:162:6: lv_right_3_0= rulePrimary
+            	    // InternalMathAssignmentLanguage.g:186:5: (lv_right_3_0= ruleMulOrDivExp )
+            	    // InternalMathAssignmentLanguage.g:187:6: lv_right_3_0= ruleMulOrDivExp
             	    {
 
-            	    						newCompositeNode(grammarAccess.getExpAccess().getRightPrimaryParserRuleCall_1_2_0());
+            	    						newCompositeNode(grammarAccess.getPlusMinusExpAccess().getRightMulOrDivExpParserRuleCall_1_2_0());
             	    					
             	    pushFollow(FOLLOW_5);
-            	    lv_right_3_0=rulePrimary();
+            	    lv_right_3_0=ruleMulOrDivExp();
 
             	    state._fsp--;
 
 
             	    						if (current==null) {
-            	    							current = createModelElementForParent(grammarAccess.getExpRule());
+            	    							current = createModelElementForParent(grammarAccess.getPlusMinusExpRule());
             	    						}
             	    						set(
             	    							current,
             	    							"right",
             	    							lv_right_3_0,
-            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Primary");
+            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.MulOrDivExp");
             	    						afterParserOrEnumRuleCall();
             	    					
 
@@ -382,28 +464,28 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
         }
         return current;
     }
-    // $ANTLR end "ruleExp"
+    // $ANTLR end "rulePlusMinusExp"
 
 
-    // $ANTLR start "entryRuleExpOp"
-    // InternalMathAssignmentLanguage.g:184:1: entryRuleExpOp returns [EObject current=null] : iv_ruleExpOp= ruleExpOp EOF ;
-    public final EObject entryRuleExpOp() throws RecognitionException {
+    // $ANTLR start "entryRuleMulOrDivExp"
+    // InternalMathAssignmentLanguage.g:209:1: entryRuleMulOrDivExp returns [EObject current=null] : iv_ruleMulOrDivExp= ruleMulOrDivExp EOF ;
+    public final EObject entryRuleMulOrDivExp() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleExpOp = null;
+        EObject iv_ruleMulOrDivExp = null;
 
 
         try {
-            // InternalMathAssignmentLanguage.g:184:46: (iv_ruleExpOp= ruleExpOp EOF )
-            // InternalMathAssignmentLanguage.g:185:2: iv_ruleExpOp= ruleExpOp EOF
+            // InternalMathAssignmentLanguage.g:209:52: (iv_ruleMulOrDivExp= ruleMulOrDivExp EOF )
+            // InternalMathAssignmentLanguage.g:210:2: iv_ruleMulOrDivExp= ruleMulOrDivExp EOF
             {
-             newCompositeNode(grammarAccess.getExpOpRule()); 
+             newCompositeNode(grammarAccess.getMulOrDivExpRule()); 
             pushFollow(FOLLOW_1);
-            iv_ruleExpOp=ruleExpOp();
+            iv_ruleMulOrDivExp=ruleMulOrDivExp();
 
             state._fsp--;
 
-             current =iv_ruleExpOp; 
+             current =iv_ruleMulOrDivExp; 
             match(input,EOF,FOLLOW_2); 
 
             }
@@ -418,69 +500,242 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
         }
         return current;
     }
-    // $ANTLR end "entryRuleExpOp"
+    // $ANTLR end "entryRuleMulOrDivExp"
 
 
-    // $ANTLR start "ruleExpOp"
-    // InternalMathAssignmentLanguage.g:191:1: ruleExpOp returns [EObject current=null] : ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) | ( () otherlv_5= '*' ) | ( () otherlv_7= '/' ) ) ;
-    public final EObject ruleExpOp() throws RecognitionException {
+    // $ANTLR start "ruleMulOrDivExp"
+    // InternalMathAssignmentLanguage.g:216:1: ruleMulOrDivExp returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleMultDivOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* ) ;
+    public final EObject ruleMulOrDivExp() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token otherlv_5=null;
-        Token otherlv_7=null;
+        EObject this_Primary_0 = null;
+
+        EObject lv_operator_2_0 = null;
+
+        EObject lv_right_3_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalMathAssignmentLanguage.g:197:2: ( ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) | ( () otherlv_5= '*' ) | ( () otherlv_7= '/' ) ) )
-            // InternalMathAssignmentLanguage.g:198:2: ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) | ( () otherlv_5= '*' ) | ( () otherlv_7= '/' ) )
+            // InternalMathAssignmentLanguage.g:222:2: ( (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleMultDivOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* ) )
+            // InternalMathAssignmentLanguage.g:223:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleMultDivOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* )
             {
-            // InternalMathAssignmentLanguage.g:198:2: ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) | ( () otherlv_5= '*' ) | ( () otherlv_7= '/' ) )
-            int alt2=4;
-            switch ( input.LA(1) ) {
-            case 13:
-                {
-                alt2=1;
+            // InternalMathAssignmentLanguage.g:223:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleMultDivOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* )
+            // InternalMathAssignmentLanguage.g:224:3: this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleMultDivOp ) ) ( (lv_right_3_0= rulePrimary ) ) )*
+            {
+
+            			newCompositeNode(grammarAccess.getMulOrDivExpAccess().getPrimaryParserRuleCall_0());
+            		
+            pushFollow(FOLLOW_6);
+            this_Primary_0=rulePrimary();
+
+            state._fsp--;
+
+
+            			current = this_Primary_0;
+            			afterParserOrEnumRuleCall();
+            		
+            // InternalMathAssignmentLanguage.g:232:3: ( () ( (lv_operator_2_0= ruleMultDivOp ) ) ( (lv_right_3_0= rulePrimary ) ) )*
+            loop2:
+            do {
+                int alt2=2;
+                int LA2_0 = input.LA(1);
+
+                if ( ((LA2_0>=13 && LA2_0<=14)) ) {
+                    alt2=1;
                 }
-                break;
-            case 14:
-                {
-                alt2=2;
+
+
+                switch (alt2) {
+            	case 1 :
+            	    // InternalMathAssignmentLanguage.g:233:4: () ( (lv_operator_2_0= ruleMultDivOp ) ) ( (lv_right_3_0= rulePrimary ) )
+            	    {
+            	    // InternalMathAssignmentLanguage.g:233:4: ()
+            	    // InternalMathAssignmentLanguage.g:234:5: 
+            	    {
+
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getMulOrDivExpAccess().getExpLeftAction_1_0(),
+            	    						current);
+            	    				
+
+            	    }
+
+            	    // InternalMathAssignmentLanguage.g:240:4: ( (lv_operator_2_0= ruleMultDivOp ) )
+            	    // InternalMathAssignmentLanguage.g:241:5: (lv_operator_2_0= ruleMultDivOp )
+            	    {
+            	    // InternalMathAssignmentLanguage.g:241:5: (lv_operator_2_0= ruleMultDivOp )
+            	    // InternalMathAssignmentLanguage.g:242:6: lv_operator_2_0= ruleMultDivOp
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getMulOrDivExpAccess().getOperatorMultDivOpParserRuleCall_1_1_0());
+            	    					
+            	    pushFollow(FOLLOW_4);
+            	    lv_operator_2_0=ruleMultDivOp();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getMulOrDivExpRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"operator",
+            	    							lv_operator_2_0,
+            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.MultDivOp");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+            	    // InternalMathAssignmentLanguage.g:259:4: ( (lv_right_3_0= rulePrimary ) )
+            	    // InternalMathAssignmentLanguage.g:260:5: (lv_right_3_0= rulePrimary )
+            	    {
+            	    // InternalMathAssignmentLanguage.g:260:5: (lv_right_3_0= rulePrimary )
+            	    // InternalMathAssignmentLanguage.g:261:6: lv_right_3_0= rulePrimary
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getMulOrDivExpAccess().getRightPrimaryParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_6);
+            	    lv_right_3_0=rulePrimary();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getMulOrDivExpRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"right",
+            	    							lv_right_3_0,
+            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Primary");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop2;
                 }
-                break;
-            case 15:
-                {
-                alt2=3;
-                }
-                break;
-            case 16:
-                {
-                alt2=4;
-                }
-                break;
-            default:
+            } while (true);
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleMulOrDivExp"
+
+
+    // $ANTLR start "entryRuleMultDivOp"
+    // InternalMathAssignmentLanguage.g:283:1: entryRuleMultDivOp returns [EObject current=null] : iv_ruleMultDivOp= ruleMultDivOp EOF ;
+    public final EObject entryRuleMultDivOp() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleMultDivOp = null;
+
+
+        try {
+            // InternalMathAssignmentLanguage.g:283:50: (iv_ruleMultDivOp= ruleMultDivOp EOF )
+            // InternalMathAssignmentLanguage.g:284:2: iv_ruleMultDivOp= ruleMultDivOp EOF
+            {
+             newCompositeNode(grammarAccess.getMultDivOpRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleMultDivOp=ruleMultDivOp();
+
+            state._fsp--;
+
+             current =iv_ruleMultDivOp; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleMultDivOp"
+
+
+    // $ANTLR start "ruleMultDivOp"
+    // InternalMathAssignmentLanguage.g:290:1: ruleMultDivOp returns [EObject current=null] : ( ( () otherlv_1= '*' ) | ( () otherlv_3= '/' ) ) ;
+    public final EObject ruleMultDivOp() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalMathAssignmentLanguage.g:296:2: ( ( ( () otherlv_1= '*' ) | ( () otherlv_3= '/' ) ) )
+            // InternalMathAssignmentLanguage.g:297:2: ( ( () otherlv_1= '*' ) | ( () otherlv_3= '/' ) )
+            {
+            // InternalMathAssignmentLanguage.g:297:2: ( ( () otherlv_1= '*' ) | ( () otherlv_3= '/' ) )
+            int alt3=2;
+            int LA3_0 = input.LA(1);
+
+            if ( (LA3_0==13) ) {
+                alt3=1;
+            }
+            else if ( (LA3_0==14) ) {
+                alt3=2;
+            }
+            else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 2, 0, input);
+                    new NoViableAltException("", 3, 0, input);
 
                 throw nvae;
             }
-
-            switch (alt2) {
+            switch (alt3) {
                 case 1 :
-                    // InternalMathAssignmentLanguage.g:199:3: ( () otherlv_1= '+' )
+                    // InternalMathAssignmentLanguage.g:298:3: ( () otherlv_1= '*' )
                     {
-                    // InternalMathAssignmentLanguage.g:199:3: ( () otherlv_1= '+' )
-                    // InternalMathAssignmentLanguage.g:200:4: () otherlv_1= '+'
+                    // InternalMathAssignmentLanguage.g:298:3: ( () otherlv_1= '*' )
+                    // InternalMathAssignmentLanguage.g:299:4: () otherlv_1= '*'
                     {
-                    // InternalMathAssignmentLanguage.g:200:4: ()
-                    // InternalMathAssignmentLanguage.g:201:5: 
+                    // InternalMathAssignmentLanguage.g:299:4: ()
+                    // InternalMathAssignmentLanguage.g:300:5: 
                     {
 
                     					current = forceCreateModelElement(
-                    						grammarAccess.getExpOpAccess().getPlusAction_0_0(),
+                    						grammarAccess.getMultDivOpAccess().getMultAction_0_0(),
                     						current);
                     				
 
@@ -488,7 +743,7 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
                     otherlv_1=(Token)match(input,13,FOLLOW_2); 
 
-                    				newLeafNode(otherlv_1, grammarAccess.getExpOpAccess().getPlusSignKeyword_0_1());
+                    				newLeafNode(otherlv_1, grammarAccess.getMultDivOpAccess().getAsteriskKeyword_0_1());
                     			
 
                     }
@@ -497,17 +752,17 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
                     }
                     break;
                 case 2 :
-                    // InternalMathAssignmentLanguage.g:213:3: ( () otherlv_3= '-' )
+                    // InternalMathAssignmentLanguage.g:312:3: ( () otherlv_3= '/' )
                     {
-                    // InternalMathAssignmentLanguage.g:213:3: ( () otherlv_3= '-' )
-                    // InternalMathAssignmentLanguage.g:214:4: () otherlv_3= '-'
+                    // InternalMathAssignmentLanguage.g:312:3: ( () otherlv_3= '/' )
+                    // InternalMathAssignmentLanguage.g:313:4: () otherlv_3= '/'
                     {
-                    // InternalMathAssignmentLanguage.g:214:4: ()
-                    // InternalMathAssignmentLanguage.g:215:5: 
+                    // InternalMathAssignmentLanguage.g:313:4: ()
+                    // InternalMathAssignmentLanguage.g:314:5: 
                     {
 
                     					current = forceCreateModelElement(
-                    						grammarAccess.getExpOpAccess().getMinusAction_1_0(),
+                    						grammarAccess.getMultDivOpAccess().getDivAction_1_0(),
                     						current);
                     				
 
@@ -515,61 +770,7 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
                     otherlv_3=(Token)match(input,14,FOLLOW_2); 
 
-                    				newLeafNode(otherlv_3, grammarAccess.getExpOpAccess().getHyphenMinusKeyword_1_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalMathAssignmentLanguage.g:227:3: ( () otherlv_5= '*' )
-                    {
-                    // InternalMathAssignmentLanguage.g:227:3: ( () otherlv_5= '*' )
-                    // InternalMathAssignmentLanguage.g:228:4: () otherlv_5= '*'
-                    {
-                    // InternalMathAssignmentLanguage.g:228:4: ()
-                    // InternalMathAssignmentLanguage.g:229:5: 
-                    {
-
-                    					current = forceCreateModelElement(
-                    						grammarAccess.getExpOpAccess().getMultAction_2_0(),
-                    						current);
-                    				
-
-                    }
-
-                    otherlv_5=(Token)match(input,15,FOLLOW_2); 
-
-                    				newLeafNode(otherlv_5, grammarAccess.getExpOpAccess().getAsteriskKeyword_2_1());
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // InternalMathAssignmentLanguage.g:241:3: ( () otherlv_7= '/' )
-                    {
-                    // InternalMathAssignmentLanguage.g:241:3: ( () otherlv_7= '/' )
-                    // InternalMathAssignmentLanguage.g:242:4: () otherlv_7= '/'
-                    {
-                    // InternalMathAssignmentLanguage.g:242:4: ()
-                    // InternalMathAssignmentLanguage.g:243:5: 
-                    {
-
-                    					current = forceCreateModelElement(
-                    						grammarAccess.getExpOpAccess().getDivAction_3_0(),
-                    						current);
-                    				
-
-                    }
-
-                    otherlv_7=(Token)match(input,16,FOLLOW_2); 
-
-                    				newLeafNode(otherlv_7, grammarAccess.getExpOpAccess().getSolidusKeyword_3_1());
+                    				newLeafNode(otherlv_3, grammarAccess.getMultDivOpAccess().getSolidusKeyword_1_1());
                     			
 
                     }
@@ -596,11 +797,155 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
         }
         return current;
     }
-    // $ANTLR end "ruleExpOp"
+    // $ANTLR end "ruleMultDivOp"
+
+
+    // $ANTLR start "entryRulePlusMinusOp"
+    // InternalMathAssignmentLanguage.g:329:1: entryRulePlusMinusOp returns [EObject current=null] : iv_rulePlusMinusOp= rulePlusMinusOp EOF ;
+    public final EObject entryRulePlusMinusOp() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_rulePlusMinusOp = null;
+
+
+        try {
+            // InternalMathAssignmentLanguage.g:329:52: (iv_rulePlusMinusOp= rulePlusMinusOp EOF )
+            // InternalMathAssignmentLanguage.g:330:2: iv_rulePlusMinusOp= rulePlusMinusOp EOF
+            {
+             newCompositeNode(grammarAccess.getPlusMinusOpRule()); 
+            pushFollow(FOLLOW_1);
+            iv_rulePlusMinusOp=rulePlusMinusOp();
+
+            state._fsp--;
+
+             current =iv_rulePlusMinusOp; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRulePlusMinusOp"
+
+
+    // $ANTLR start "rulePlusMinusOp"
+    // InternalMathAssignmentLanguage.g:336:1: rulePlusMinusOp returns [EObject current=null] : ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) ) ;
+    public final EObject rulePlusMinusOp() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalMathAssignmentLanguage.g:342:2: ( ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) ) )
+            // InternalMathAssignmentLanguage.g:343:2: ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) )
+            {
+            // InternalMathAssignmentLanguage.g:343:2: ( ( () otherlv_1= '+' ) | ( () otherlv_3= '-' ) )
+            int alt4=2;
+            int LA4_0 = input.LA(1);
+
+            if ( (LA4_0==15) ) {
+                alt4=1;
+            }
+            else if ( (LA4_0==16) ) {
+                alt4=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 4, 0, input);
+
+                throw nvae;
+            }
+            switch (alt4) {
+                case 1 :
+                    // InternalMathAssignmentLanguage.g:344:3: ( () otherlv_1= '+' )
+                    {
+                    // InternalMathAssignmentLanguage.g:344:3: ( () otherlv_1= '+' )
+                    // InternalMathAssignmentLanguage.g:345:4: () otherlv_1= '+'
+                    {
+                    // InternalMathAssignmentLanguage.g:345:4: ()
+                    // InternalMathAssignmentLanguage.g:346:5: 
+                    {
+
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getPlusMinusOpAccess().getPlusAction_0_0(),
+                    						current);
+                    				
+
+                    }
+
+                    otherlv_1=(Token)match(input,15,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getPlusMinusOpAccess().getPlusSignKeyword_0_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // InternalMathAssignmentLanguage.g:358:3: ( () otherlv_3= '-' )
+                    {
+                    // InternalMathAssignmentLanguage.g:358:3: ( () otherlv_3= '-' )
+                    // InternalMathAssignmentLanguage.g:359:4: () otherlv_3= '-'
+                    {
+                    // InternalMathAssignmentLanguage.g:359:4: ()
+                    // InternalMathAssignmentLanguage.g:360:5: 
+                    {
+
+                    					current = forceCreateModelElement(
+                    						grammarAccess.getPlusMinusOpAccess().getMinusAction_1_0(),
+                    						current);
+                    				
+
+                    }
+
+                    otherlv_3=(Token)match(input,16,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getPlusMinusOpAccess().getHyphenMinusKeyword_1_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "rulePlusMinusOp"
 
 
     // $ANTLR start "entryRulePrimary"
-    // InternalMathAssignmentLanguage.g:258:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
+    // InternalMathAssignmentLanguage.g:375:1: entryRulePrimary returns [EObject current=null] : iv_rulePrimary= rulePrimary EOF ;
     public final EObject entryRulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -608,8 +953,8 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
 
         try {
-            // InternalMathAssignmentLanguage.g:258:48: (iv_rulePrimary= rulePrimary EOF )
-            // InternalMathAssignmentLanguage.g:259:2: iv_rulePrimary= rulePrimary EOF
+            // InternalMathAssignmentLanguage.g:375:48: (iv_rulePrimary= rulePrimary EOF )
+            // InternalMathAssignmentLanguage.g:376:2: iv_rulePrimary= rulePrimary EOF
             {
              newCompositeNode(grammarAccess.getPrimaryRule()); 
             pushFollow(FOLLOW_1);
@@ -636,7 +981,7 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
 
     // $ANTLR start "rulePrimary"
-    // InternalMathAssignmentLanguage.g:265:1: rulePrimary returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) ) ;
+    // InternalMathAssignmentLanguage.g:382:1: rulePrimary returns [EObject current=null] : ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) ) ;
     public final EObject rulePrimary() throws RecognitionException {
         EObject current = null;
 
@@ -650,34 +995,34 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
         	enterRule();
 
         try {
-            // InternalMathAssignmentLanguage.g:271:2: ( ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) ) )
-            // InternalMathAssignmentLanguage.g:272:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) )
+            // InternalMathAssignmentLanguage.g:388:2: ( ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) ) )
+            // InternalMathAssignmentLanguage.g:389:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) )
             {
-            // InternalMathAssignmentLanguage.g:272:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) )
-            int alt3=2;
-            int LA3_0 = input.LA(1);
+            // InternalMathAssignmentLanguage.g:389:2: ( ( () ( (lv_value_1_0= RULE_INT ) ) ) | ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' ) )
+            int alt5=2;
+            int LA5_0 = input.LA(1);
 
-            if ( (LA3_0==RULE_INT) ) {
-                alt3=1;
+            if ( (LA5_0==RULE_INT) ) {
+                alt5=1;
             }
-            else if ( (LA3_0==17) ) {
-                alt3=2;
+            else if ( (LA5_0==17) ) {
+                alt5=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 3, 0, input);
+                    new NoViableAltException("", 5, 0, input);
 
                 throw nvae;
             }
-            switch (alt3) {
+            switch (alt5) {
                 case 1 :
-                    // InternalMathAssignmentLanguage.g:273:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
+                    // InternalMathAssignmentLanguage.g:390:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
                     {
-                    // InternalMathAssignmentLanguage.g:273:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
-                    // InternalMathAssignmentLanguage.g:274:4: () ( (lv_value_1_0= RULE_INT ) )
+                    // InternalMathAssignmentLanguage.g:390:3: ( () ( (lv_value_1_0= RULE_INT ) ) )
+                    // InternalMathAssignmentLanguage.g:391:4: () ( (lv_value_1_0= RULE_INT ) )
                     {
-                    // InternalMathAssignmentLanguage.g:274:4: ()
-                    // InternalMathAssignmentLanguage.g:275:5: 
+                    // InternalMathAssignmentLanguage.g:391:4: ()
+                    // InternalMathAssignmentLanguage.g:392:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -687,11 +1032,11 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
                     }
 
-                    // InternalMathAssignmentLanguage.g:281:4: ( (lv_value_1_0= RULE_INT ) )
-                    // InternalMathAssignmentLanguage.g:282:5: (lv_value_1_0= RULE_INT )
+                    // InternalMathAssignmentLanguage.g:398:4: ( (lv_value_1_0= RULE_INT ) )
+                    // InternalMathAssignmentLanguage.g:399:5: (lv_value_1_0= RULE_INT )
                     {
-                    // InternalMathAssignmentLanguage.g:282:5: (lv_value_1_0= RULE_INT )
-                    // InternalMathAssignmentLanguage.g:283:6: lv_value_1_0= RULE_INT
+                    // InternalMathAssignmentLanguage.g:399:5: (lv_value_1_0= RULE_INT )
+                    // InternalMathAssignmentLanguage.g:400:6: lv_value_1_0= RULE_INT
                     {
                     lv_value_1_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -720,13 +1065,13 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
                     }
                     break;
                 case 2 :
-                    // InternalMathAssignmentLanguage.g:301:3: ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' )
+                    // InternalMathAssignmentLanguage.g:418:3: ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' )
                     {
-                    // InternalMathAssignmentLanguage.g:301:3: ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' )
-                    // InternalMathAssignmentLanguage.g:302:4: () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')'
+                    // InternalMathAssignmentLanguage.g:418:3: ( () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')' )
+                    // InternalMathAssignmentLanguage.g:419:4: () otherlv_3= '(' ( (lv_exp_4_0= ruleExp ) ) otherlv_5= ')'
                     {
-                    // InternalMathAssignmentLanguage.g:302:4: ()
-                    // InternalMathAssignmentLanguage.g:303:5: 
+                    // InternalMathAssignmentLanguage.g:419:4: ()
+                    // InternalMathAssignmentLanguage.g:420:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -740,16 +1085,16 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
                     				newLeafNode(otherlv_3, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_1());
                     			
-                    // InternalMathAssignmentLanguage.g:313:4: ( (lv_exp_4_0= ruleExp ) )
-                    // InternalMathAssignmentLanguage.g:314:5: (lv_exp_4_0= ruleExp )
+                    // InternalMathAssignmentLanguage.g:430:4: ( (lv_exp_4_0= ruleExp ) )
+                    // InternalMathAssignmentLanguage.g:431:5: (lv_exp_4_0= ruleExp )
                     {
-                    // InternalMathAssignmentLanguage.g:314:5: (lv_exp_4_0= ruleExp )
-                    // InternalMathAssignmentLanguage.g:315:6: lv_exp_4_0= ruleExp
+                    // InternalMathAssignmentLanguage.g:431:5: (lv_exp_4_0= ruleExp )
+                    // InternalMathAssignmentLanguage.g:432:6: lv_exp_4_0= ruleExp
                     {
 
                     						newCompositeNode(grammarAccess.getPrimaryAccess().getExpExpParserRuleCall_1_2_0());
                     					
-                    pushFollow(FOLLOW_6);
+                    pushFollow(FOLLOW_7);
                     lv_exp_4_0=ruleExp();
 
                     state._fsp--;
@@ -811,7 +1156,8 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000020010L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x000000000001E002L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000018002L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000006002L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000040000L});
 
 }

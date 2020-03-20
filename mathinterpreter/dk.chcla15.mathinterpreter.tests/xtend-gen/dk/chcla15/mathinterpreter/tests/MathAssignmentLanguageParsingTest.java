@@ -4,16 +4,23 @@
 package dk.chcla15.mathinterpreter.tests;
 
 import com.google.inject.Inject;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Div;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Exp;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.ExpOp;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.MathExp;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus;
 import dk.chcla15.mathinterpreter.tests.MathAssignmentLanguageInjectorProvider;
+import java.util.Arrays;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.junit.Assert;
@@ -45,6 +52,7 @@ public class MathAssignmentLanguageParsingTest {
       _builder.newLine();
       MathExp _parse = this.parseHelper.parse(_builder);
       final Procedure1<MathExp> _function = (MathExp it) -> {
+        InputOutput.<CharSequence>println(this.stringRepr(it.getExp()));
         Exp _left = it.getExp().getLeft();
         Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left).getValue(), 10);
         Exp _right = it.getExp().getRight();
@@ -64,6 +72,7 @@ public class MathAssignmentLanguageParsingTest {
       _builder.newLine();
       MathExp _parse = this.parseHelper.parse(_builder);
       final Procedure1<MathExp> _function = (MathExp it) -> {
+        InputOutput.<CharSequence>println(this.stringRepr(it.getExp()));
         Exp _left = it.getExp().getLeft();
         final Procedure1<Parenthesis> _function_1 = (Parenthesis it_1) -> {
           Exp _left_1 = it_1.getExp().getLeft();
@@ -89,6 +98,7 @@ public class MathAssignmentLanguageParsingTest {
       _builder.newLine();
       MathExp _parse = this.parseHelper.parse(_builder);
       final Procedure1<MathExp> _function = (MathExp it) -> {
+        InputOutput.<CharSequence>println(this.stringRepr(it.getExp()));
         Exp _left = it.getExp().getLeft();
         Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left).getValue(), 2);
         Exp _right = it.getExp().getRight();
@@ -103,6 +113,144 @@ public class MathAssignmentLanguageParsingTest {
       ObjectExtensions.<MathExp>operator_doubleArrow(_parse, _function);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testRightPlusParenthesis2() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("result is 2*(1+3)");
+      _builder.newLine();
+      MathExp _parse = this.parseHelper.parse(_builder);
+      final Procedure1<MathExp> _function = (MathExp it) -> {
+        InputOutput.<CharSequence>println(this.stringRepr(it.getExp()));
+        Exp _left = it.getExp().getLeft();
+        Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left).getValue(), 2);
+        Exp _right = it.getExp().getRight();
+        final Procedure1<Parenthesis> _function_1 = (Parenthesis it_1) -> {
+          Exp _left_1 = it_1.getExp().getLeft();
+          Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left_1).getValue(), 1);
+          Exp _right_1 = it_1.getExp().getRight();
+          Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _right_1).getValue(), 3);
+        };
+        ObjectExtensions.<Parenthesis>operator_doubleArrow(((Parenthesis) _right), _function_1);
+      };
+      ObjectExtensions.<MathExp>operator_doubleArrow(_parse, _function);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testRightDivParenthesis() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("result is 10-2*(1/2)");
+      _builder.newLine();
+      MathExp _parse = this.parseHelper.parse(_builder);
+      final Procedure1<MathExp> _function = (MathExp it) -> {
+        InputOutput.<CharSequence>println(this.stringRepr(it.getExp()));
+        Exp _left = it.getExp().getLeft();
+        Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left).getValue(), 10);
+        Exp _right = it.getExp().getRight();
+        final Procedure1<Exp> _function_1 = (Exp it_1) -> {
+          Exp _left_1 = it_1.getLeft();
+          Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left_1).getValue(), 2);
+          Exp _right_1 = it_1.getRight();
+          final Procedure1<Parenthesis> _function_2 = (Parenthesis it_2) -> {
+            Exp _left_2 = it_2.getExp().getLeft();
+            Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left_2).getValue(), 1);
+            Exp _right_2 = it_2.getExp().getRight();
+            Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _right_2).getValue(), 2);
+          };
+          ObjectExtensions.<Parenthesis>operator_doubleArrow(((Parenthesis) _right_1), _function_2);
+        };
+        ObjectExtensions.<Exp>operator_doubleArrow(((Exp) _right), _function_1);
+      };
+      ObjectExtensions.<MathExp>operator_doubleArrow(_parse, _function);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  private CharSequence _stringRepr(final Exp e) {
+    CharSequence _switchResult = null;
+    ExpOp _operator = e.getOperator();
+    boolean _matched = false;
+    if (_operator instanceof Plus) {
+      _matched=true;
+      StringConcatenation _builder = new StringConcatenation();
+      CharSequence _stringRepr = this.stringRepr(e.getLeft());
+      _builder.append(_stringRepr);
+      _builder.append("+");
+      CharSequence _stringRepr_1 = this.stringRepr(e.getRight());
+      _builder.append(_stringRepr_1);
+      _switchResult = _builder;
+    }
+    if (!_matched) {
+      if (_operator instanceof Minus) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        CharSequence _stringRepr = this.stringRepr(e.getLeft());
+        _builder.append(_stringRepr);
+        _builder.append("-");
+        CharSequence _stringRepr_1 = this.stringRepr(e.getRight());
+        _builder.append(_stringRepr_1);
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (_operator instanceof Mult) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(");
+        CharSequence _stringRepr = this.stringRepr(e.getLeft());
+        _builder.append(_stringRepr);
+        _builder.append("*");
+        CharSequence _stringRepr_1 = this.stringRepr(e.getRight());
+        _builder.append(_stringRepr_1);
+        _builder.append(")");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (_operator instanceof Div) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("(");
+        CharSequence _stringRepr = this.stringRepr(e.getLeft());
+        _builder.append(_stringRepr);
+        _builder.append("/");
+        CharSequence _stringRepr_1 = this.stringRepr(e.getRight());
+        _builder.append(_stringRepr_1);
+        _builder.append(")");
+        _switchResult = _builder;
+      }
+    }
+    return _switchResult;
+  }
+  
+  private CharSequence _stringRepr(final dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number n) {
+    return Integer.valueOf(n.getValue()).toString();
+  }
+  
+  private CharSequence _stringRepr(final Parenthesis p) {
+    CharSequence _stringRepr = this.stringRepr(p.getExp());
+    String _plus = ("(" + _stringRepr);
+    return (_plus + ")");
+  }
+  
+  private CharSequence stringRepr(final Exp n) {
+    if (n instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
+      return _stringRepr((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)n);
+    } else if (n instanceof Parenthesis) {
+      return _stringRepr((Parenthesis)n);
+    } else if (n != null) {
+      return _stringRepr(n);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(n).toString());
     }
   }
 }

@@ -7,12 +7,27 @@ MathExp:
 ;
 
 Exp:
-	//left=Primary (operator=ExpOp right=Exp)?
-	Primary ({Exp.left=current} operator=ExpOp right=Primary)*
+	PlusMinusExp
+;
+
+PlusMinusExp returns Exp:
+	MulOrDivExp ({Exp.left=current} operator=PlusMinusOp right=MulOrDivExp)*
+;
+
+MulOrDivExp returns Exp:
+	Primary ({Exp.left=current} operator=MultDivOp right=Primary)*
 ;
 
 ExpOp:
-	{Plus} '+' | {Minus} '-'	 | {Mult} '*' | {Div} '/'	
+	MultDivOp | PlusMinusOp
+;
+
+MultDivOp returns ExpOp:
+	{Mult} '*' | {Div} '/'
+;
+
+PlusMinusOp returns ExpOp:
+	{Plus} '+' | {Minus} '-'
 ;
 
 Primary returns Exp:

@@ -55,20 +55,6 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass plusEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass minusEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass multEClass = null;
 
   /**
@@ -77,6 +63,20 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
    * @generated
    */
   private EClass divEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass plusEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass minusEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -238,28 +238,6 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
    * @generated
    */
   @Override
-  public EClass getPlus()
-  {
-    return plusEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getMinus()
-  {
-    return minusEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getMult()
   {
     return multEClass;
@@ -274,6 +252,28 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
   public EClass getDiv()
   {
     return divEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPlus()
+  {
+    return plusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMinus()
+  {
+    return minusEClass;
   }
 
   /**
@@ -361,13 +361,13 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
 
     expOpEClass = createEClass(EXP_OP);
 
-    plusEClass = createEClass(PLUS);
-
-    minusEClass = createEClass(MINUS);
-
     multEClass = createEClass(MULT);
 
     divEClass = createEClass(DIV);
+
+    plusEClass = createEClass(PLUS);
+
+    minusEClass = createEClass(MINUS);
 
     numberEClass = createEClass(NUMBER);
     createEAttribute(numberEClass, NUMBER__VALUE);
@@ -405,10 +405,10 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    plusEClass.getESuperTypes().add(this.getExpOp());
-    minusEClass.getESuperTypes().add(this.getExpOp());
     multEClass.getESuperTypes().add(this.getExpOp());
     divEClass.getESuperTypes().add(this.getExpOp());
+    plusEClass.getESuperTypes().add(this.getExpOp());
+    minusEClass.getESuperTypes().add(this.getExpOp());
     numberEClass.getESuperTypes().add(this.getExp());
     parenthesisEClass.getESuperTypes().add(this.getExp());
 
@@ -423,13 +423,13 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
 
     initEClass(expOpEClass, ExpOp.class, "ExpOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-    initEClass(plusEClass, Plus.class, "Plus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(minusEClass, Minus.class, "Minus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
     initEClass(multEClass, Mult.class, "Mult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(divEClass, Div.class, "Div", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(plusEClass, Plus.class, "Plus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(minusEClass, Minus.class, "Minus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(numberEClass, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number.class, "Number", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNumber_Value(), ecorePackage.getEInt(), "value", null, 0, 1, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

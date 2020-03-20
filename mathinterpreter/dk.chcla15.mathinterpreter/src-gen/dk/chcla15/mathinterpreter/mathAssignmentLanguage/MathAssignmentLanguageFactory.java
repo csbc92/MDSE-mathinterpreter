@@ -51,24 +51,6 @@ public interface MathAssignmentLanguageFactory extends EFactory
   ExpOp createExpOp();
 
   /**
-   * Returns a new object of class '<em>Plus</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Plus</em>'.
-   * @generated
-   */
-  Plus createPlus();
-
-  /**
-   * Returns a new object of class '<em>Minus</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Minus</em>'.
-   * @generated
-   */
-  Minus createMinus();
-
-  /**
    * Returns a new object of class '<em>Mult</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,6 +67,24 @@ public interface MathAssignmentLanguageFactory extends EFactory
    * @generated
    */
   Div createDiv();
+
+  /**
+   * Returns a new object of class '<em>Plus</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Plus</em>'.
+   * @generated
+   */
+  Plus createPlus();
+
+  /**
+   * Returns a new object of class '<em>Minus</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Minus</em>'.
+   * @generated
+   */
+  Minus createMinus();
 
   /**
    * Returns a new object of class '<em>Number</em>'.

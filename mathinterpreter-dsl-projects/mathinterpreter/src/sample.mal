@@ -1,1 +1,1 @@
-result is 5-2-1 // Should yield 2 due to left associativity
+result is 10-2*(1+2)/2 // Should yield 7.0

@@ -102,22 +102,6 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MathAssignmentLanguagePackage.PLUS:
-      {
-        Plus plus = (Plus)theEObject;
-        T result = casePlus(plus);
-        if (result == null) result = caseExpOp(plus);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MathAssignmentLanguagePackage.MINUS:
-      {
-        Minus minus = (Minus)theEObject;
-        T result = caseMinus(minus);
-        if (result == null) result = caseExpOp(minus);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case MathAssignmentLanguagePackage.MULT:
       {
         Mult mult = (Mult)theEObject;
@@ -131,6 +115,22 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
         Div div = (Div)theEObject;
         T result = caseDiv(div);
         if (result == null) result = caseExpOp(div);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathAssignmentLanguagePackage.PLUS:
+      {
+        Plus plus = (Plus)theEObject;
+        T result = casePlus(plus);
+        if (result == null) result = caseExpOp(plus);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathAssignmentLanguagePackage.MINUS:
+      {
+        Minus minus = (Minus)theEObject;
+        T result = caseMinus(minus);
+        if (result == null) result = caseExpOp(minus);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -203,38 +203,6 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Plus</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Plus</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePlus(Plus object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Minus</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Minus</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMinus(Minus object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Mult</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -262,6 +230,38 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDiv(Div object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Plus</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Plus</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlus(Plus object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Minus</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Minus</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMinus(Minus object)
   {
     return null;
   }

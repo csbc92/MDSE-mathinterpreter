@@ -99,16 +99,6 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
         return createExpOpAdapter();
       }
       @Override
-      public Adapter casePlus(Plus object)
-      {
-        return createPlusAdapter();
-      }
-      @Override
-      public Adapter caseMinus(Minus object)
-      {
-        return createMinusAdapter();
-      }
-      @Override
       public Adapter caseMult(Mult object)
       {
         return createMultAdapter();
@@ -117,6 +107,16 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDiv(Div object)
       {
         return createDivAdapter();
+      }
+      @Override
+      public Adapter casePlus(Plus object)
+      {
+        return createPlusAdapter();
+      }
+      @Override
+      public Adapter caseMinus(Minus object)
+      {
+        return createMinusAdapter();
       }
       @Override
       public Adapter caseNumber(dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number object)
@@ -196,36 +196,6 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus <em>Plus</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus
-   * @generated
-   */
-  public Adapter createPlusAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus <em>Minus</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus
-   * @generated
-   */
-  public Adapter createMinusAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult <em>Mult</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -251,6 +221,36 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDivAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus <em>Plus</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus
+   * @generated
+   */
+  public Adapter createPlusAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus <em>Minus</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus
+   * @generated
+   */
+  public Adapter createMinusAdapter()
   {
     return null;
   }

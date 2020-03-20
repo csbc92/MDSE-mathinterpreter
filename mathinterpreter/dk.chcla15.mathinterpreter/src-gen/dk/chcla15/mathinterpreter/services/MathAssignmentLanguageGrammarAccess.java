@@ -52,38 +52,87 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	}
 	public class ExpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.Exp");
+		private final RuleCall cPlusMinusExpParserRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//Exp:
+		//	PlusMinusExp;
+		@Override public ParserRule getRule() { return rule; }
+		
+		////Primary ({Exp.left=current} operator=ExpOp right=Primary)* // Left associativity by default
+		//PlusMinusExp
+		public RuleCall getPlusMinusExpParserRuleCall() { return cPlusMinusExpParserRuleCall; }
+	}
+	public class PlusMinusExpElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.PlusMinusExp");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cMulOrDivExpParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cExpLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cOperatorExpOpParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final RuleCall cOperatorPlusMinusOpParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightMulOrDivExpParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//Exp:
-		//	Primary ({Exp.left=current} operator=ExpOp right=Primary)*;
+		//PlusMinusExp Exp:
+		//	MulOrDivExp ({Exp.left=current} operator=PlusMinusOp right=MulOrDivExp)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		////left=Primary (operator=ExpOp right=Exp)?
-		//Primary ({Exp.left=current} operator=ExpOp right=Primary)*
+		//MulOrDivExp ({Exp.left=current} operator=PlusMinusOp right=MulOrDivExp)*
 		public Group getGroup() { return cGroup; }
 		
-		////left=Primary (operator=ExpOp right=Exp)?
-		//Primary
-		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
+		//MulOrDivExp
+		public RuleCall getMulOrDivExpParserRuleCall_0() { return cMulOrDivExpParserRuleCall_0; }
 		
-		//({Exp.left=current} operator=ExpOp right=Primary)*
+		//({Exp.left=current} operator=PlusMinusOp right=MulOrDivExp)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{Exp.left=current}
 		public Action getExpLeftAction_1_0() { return cExpLeftAction_1_0; }
 		
-		//operator=ExpOp
+		//operator=PlusMinusOp
 		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
 		
-		//ExpOp
-		public RuleCall getOperatorExpOpParserRuleCall_1_1_0() { return cOperatorExpOpParserRuleCall_1_1_0; }
+		//PlusMinusOp
+		public RuleCall getOperatorPlusMinusOpParserRuleCall_1_1_0() { return cOperatorPlusMinusOpParserRuleCall_1_1_0; }
+		
+		//right=MulOrDivExp
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
+		
+		//MulOrDivExp
+		public RuleCall getRightMulOrDivExpParserRuleCall_1_2_0() { return cRightMulOrDivExpParserRuleCall_1_2_0; }
+	}
+	public class MulOrDivExpElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.MulOrDivExp");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cExpLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorMultDivOpParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		
+		//MulOrDivExp Exp:
+		//	Primary ({Exp.left=current} operator=MultDivOp right=Primary)*;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Primary ({Exp.left=current} operator=MultDivOp right=Primary)*
+		public Group getGroup() { return cGroup; }
+		
+		//Primary
+		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
+		
+		//({Exp.left=current} operator=MultDivOp right=Primary)*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Exp.left=current}
+		public Action getExpLeftAction_1_0() { return cExpLeftAction_1_0; }
+		
+		//operator=MultDivOp
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
+		
+		//MultDivOp
+		public RuleCall getOperatorMultDivOpParserRuleCall_1_1_0() { return cOperatorMultDivOpParserRuleCall_1_1_0; }
 		
 		//right=Primary
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -94,24 +143,72 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	public class ExpOpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMultDivOpParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cPlusMinusOpParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//ExpOp:
+		//	MultDivOp | PlusMinusOp;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//MultDivOp | PlusMinusOp
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//MultDivOp
+		public RuleCall getMultDivOpParserRuleCall_0() { return cMultDivOpParserRuleCall_0; }
+		
+		//PlusMinusOp
+		public RuleCall getPlusMinusOpParserRuleCall_1() { return cPlusMinusOpParserRuleCall_1; }
+	}
+	public class MultDivOpElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.MultDivOp");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cMultAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Keyword cAsteriskKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cDivAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cSolidusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		
+		//MultDivOp ExpOp:
+		//	{Mult} '*' | {Div} '/';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{Mult} '*' | {Div} '/'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//{Mult} '*'
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//{Mult}
+		public Action getMultAction_0_0() { return cMultAction_0_0; }
+		
+		//'*'
+		public Keyword getAsteriskKeyword_0_1() { return cAsteriskKeyword_0_1; }
+		
+		//{Div} '/'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Div}
+		public Action getDivAction_1_0() { return cDivAction_1_0; }
+		
+		//'/'
+		public Keyword getSolidusKeyword_1_1() { return cSolidusKeyword_1_1; }
+	}
+	public class PlusMinusOpElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.PlusMinusOp");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cPlusAction_0_0 = (Action)cGroup_0.eContents().get(0);
 		private final Keyword cPlusSignKeyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Action cMinusAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Action cMultAction_2_0 = (Action)cGroup_2.eContents().get(0);
-		private final Keyword cAsteriskKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Action cDivAction_3_0 = (Action)cGroup_3.eContents().get(0);
-		private final Keyword cSolidusKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
 		
-		//ExpOp:
-		//	{Plus} '+' | {Minus} '-' | {Mult} '*' | {Div} '/';
+		//PlusMinusOp ExpOp:
+		//	{Plus} '+' | {Minus} '-';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Plus} '+' | {Minus} '-' | {Mult} '*' | {Div} '/'
+		//{Plus} '+' | {Minus} '-'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{Plus} '+'
@@ -131,24 +228,6 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 		
 		//'-'
 		public Keyword getHyphenMinusKeyword_1_1() { return cHyphenMinusKeyword_1_1; }
-		
-		//{Mult} '*'
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//{Mult}
-		public Action getMultAction_2_0() { return cMultAction_2_0; }
-		
-		//'*'
-		public Keyword getAsteriskKeyword_2_1() { return cAsteriskKeyword_2_1; }
-		
-		//{Div} '/'
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//{Div}
-		public Action getDivAction_3_0() { return cDivAction_3_0; }
-		
-		//'/'
-		public Keyword getSolidusKeyword_3_1() { return cSolidusKeyword_3_1; }
 	}
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.Primary");
@@ -205,7 +284,11 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	
 	private final MathExpElements pMathExp;
 	private final ExpElements pExp;
+	private final PlusMinusExpElements pPlusMinusExp;
+	private final MulOrDivExpElements pMulOrDivExp;
 	private final ExpOpElements pExpOp;
+	private final MultDivOpElements pMultDivOp;
+	private final PlusMinusOpElements pPlusMinusOp;
 	private final PrimaryElements pPrimary;
 	
 	private final Grammar grammar;
@@ -219,7 +302,11 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 		this.gaTerminals = gaTerminals;
 		this.pMathExp = new MathExpElements();
 		this.pExp = new ExpElements();
+		this.pPlusMinusExp = new PlusMinusExpElements();
+		this.pMulOrDivExp = new MulOrDivExpElements();
 		this.pExpOp = new ExpOpElements();
+		this.pMultDivOp = new MultDivOpElements();
+		this.pPlusMinusOp = new PlusMinusOpElements();
 		this.pPrimary = new PrimaryElements();
 	}
 	
@@ -261,7 +348,7 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	}
 	
 	//Exp:
-	//	Primary ({Exp.left=current} operator=ExpOp right=Primary)*;
+	//	PlusMinusExp;
 	public ExpElements getExpAccess() {
 		return pExp;
 	}
@@ -270,14 +357,54 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 		return getExpAccess().getRule();
 	}
 	
+	//PlusMinusExp Exp:
+	//	MulOrDivExp ({Exp.left=current} operator=PlusMinusOp right=MulOrDivExp)*;
+	public PlusMinusExpElements getPlusMinusExpAccess() {
+		return pPlusMinusExp;
+	}
+	
+	public ParserRule getPlusMinusExpRule() {
+		return getPlusMinusExpAccess().getRule();
+	}
+	
+	//MulOrDivExp Exp:
+	//	Primary ({Exp.left=current} operator=MultDivOp right=Primary)*;
+	public MulOrDivExpElements getMulOrDivExpAccess() {
+		return pMulOrDivExp;
+	}
+	
+	public ParserRule getMulOrDivExpRule() {
+		return getMulOrDivExpAccess().getRule();
+	}
+	
 	//ExpOp:
-	//	{Plus} '+' | {Minus} '-' | {Mult} '*' | {Div} '/';
+	//	MultDivOp | PlusMinusOp;
 	public ExpOpElements getExpOpAccess() {
 		return pExpOp;
 	}
 	
 	public ParserRule getExpOpRule() {
 		return getExpOpAccess().getRule();
+	}
+	
+	//MultDivOp ExpOp:
+	//	{Mult} '*' | {Div} '/';
+	public MultDivOpElements getMultDivOpAccess() {
+		return pMultDivOp;
+	}
+	
+	public ParserRule getMultDivOpRule() {
+		return getMultDivOpAccess().getRule();
+	}
+	
+	//PlusMinusOp ExpOp:
+	//	{Plus} '+' | {Minus} '-';
+	public PlusMinusOpElements getPlusMinusOpAccess() {
+		return pPlusMinusOp;
+	}
+	
+	public ParserRule getPlusMinusOpRule() {
+		return getPlusMinusOpAccess().getRule();
 	}
 	
 	//Primary Exp:

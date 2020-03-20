@@ -30,47 +30,47 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     final MathExp math = Iterators.<MathExp>filter(resource.getAllContents(), MathExp.class).next();
-    final int result = this.compute(math);
+    final double result = this.compute(math);
     CharSequence _display = this.display(math);
     String _plus = ("Math expression = " + _display);
     System.out.println(_plus);
-    JOptionPane.showMessageDialog(null, ("result = " + Integer.valueOf(result)), "Math Language", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(null, ("result = " + Double.valueOf(result)), "Math Language", JOptionPane.INFORMATION_MESSAGE);
   }
   
-  public int compute(final MathExp math) {
+  public double compute(final MathExp math) {
     return this.computeExp(math.getExp());
   }
   
-  protected int _computeExp(final Exp exp) {
-    int _xblockexpression = (int) 0;
+  protected double _computeExp(final Exp exp) {
+    double _xblockexpression = (double) 0;
     {
-      final int left = this.computeExp(exp.getLeft());
-      int _switchResult = (int) 0;
+      final double left = this.computeExp(exp.getLeft());
+      double _switchResult = (double) 0;
       ExpOp _operator = exp.getOperator();
       boolean _matched = false;
       if (_operator instanceof Plus) {
         _matched=true;
-        int _computeExp = this.computeExp(exp.getRight());
+        double _computeExp = this.computeExp(exp.getRight());
         _switchResult = (left + _computeExp);
       }
       if (!_matched) {
         if (_operator instanceof Minus) {
           _matched=true;
-          int _computeExp = this.computeExp(exp.getRight());
+          double _computeExp = this.computeExp(exp.getRight());
           _switchResult = (left - _computeExp);
         }
       }
       if (!_matched) {
         if (_operator instanceof Mult) {
           _matched=true;
-          int _computeExp = this.computeExp(exp.getRight());
+          double _computeExp = this.computeExp(exp.getRight());
           _switchResult = (left * _computeExp);
         }
       }
       if (!_matched) {
         if (_operator instanceof Div) {
           _matched=true;
-          int _computeExp = this.computeExp(exp.getRight());
+          double _computeExp = this.computeExp(exp.getRight());
           _switchResult = (left / _computeExp);
         }
       }
@@ -82,11 +82,11 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
   
-  protected int _computeExp(final dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number n) {
+  protected double _computeExp(final dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number n) {
     return n.getValue();
   }
   
-  protected int _computeExp(final Parenthesis n) {
+  protected double _computeExp(final Parenthesis n) {
     return this.computeExp(n.getExp());
   }
   
@@ -146,7 +146,7 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     return "/";
   }
   
-  public int computeExp(final Exp n) {
+  public double computeExp(final Exp n) {
     if (n instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
       return _computeExp((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)n);
     } else if (n instanceof Parenthesis) {

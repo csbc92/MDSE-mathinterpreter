@@ -77,10 +77,10 @@ public class MathAssignmentLanguageFactoryImpl extends EFactoryImpl implements M
       case MathAssignmentLanguagePackage.MATH_EXP: return createMathExp();
       case MathAssignmentLanguagePackage.EXP: return createExp();
       case MathAssignmentLanguagePackage.EXP_OP: return createExpOp();
-      case MathAssignmentLanguagePackage.PLUS: return createPlus();
-      case MathAssignmentLanguagePackage.MINUS: return createMinus();
       case MathAssignmentLanguagePackage.MULT: return createMult();
       case MathAssignmentLanguagePackage.DIV: return createDiv();
+      case MathAssignmentLanguagePackage.PLUS: return createPlus();
+      case MathAssignmentLanguagePackage.MINUS: return createMinus();
       case MathAssignmentLanguagePackage.NUMBER: return createNumber();
       case MathAssignmentLanguagePackage.PARENTHESIS: return createParenthesis();
       default:
@@ -130,30 +130,6 @@ public class MathAssignmentLanguageFactoryImpl extends EFactoryImpl implements M
    * @generated
    */
   @Override
-  public Plus createPlus()
-  {
-    PlusImpl plus = new PlusImpl();
-    return plus;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Minus createMinus()
-  {
-    MinusImpl minus = new MinusImpl();
-    return minus;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Mult createMult()
   {
     MultImpl mult = new MultImpl();
@@ -170,6 +146,30 @@ public class MathAssignmentLanguageFactoryImpl extends EFactoryImpl implements M
   {
     DivImpl div = new DivImpl();
     return div;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Plus createPlus()
+  {
+    PlusImpl plus = new PlusImpl();
+    return plus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Minus createMinus()
+  {
+    MinusImpl minus = new MinusImpl();
+    return minus;
   }
 
   /**

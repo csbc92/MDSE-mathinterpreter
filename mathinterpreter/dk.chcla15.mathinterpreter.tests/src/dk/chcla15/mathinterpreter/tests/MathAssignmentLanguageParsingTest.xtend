@@ -13,6 +13,11 @@ import static extension org.junit.Assert.*;
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Exp
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Div
 
 @ExtendWith(InjectionExtension)
 @InjectWith(MathAssignmentLanguageInjectorProvider)
@@ -30,6 +35,8 @@ class MathAssignmentLanguageParsingTest {
 		'''
 		result is 10+10
 		'''.parse => [
+			println(exp.stringRepr)
+			
 			(exp.left as Number).value.assertEquals(10)			
 			(exp.right as Number).value.assertEquals(10)
 		]
@@ -40,6 +47,8 @@ class MathAssignmentLanguageParsingTest {
 		'''
 		result is (2+1)+3
 		'''.parse => [
+			println(exp.stringRepr)
+			
 			(exp.left as Parenthesis) => [
 				(exp.left as Number).value.assertEquals(2)
 				(exp.right as Number).value.assertEquals(1)
@@ -52,7 +61,9 @@ class MathAssignmentLanguageParsingTest {
 	def void testRightPlusParenthesis() {
 		'''
 		result is 2+(1+3)
-		'''.parse => [		
+		'''.parse => [
+			println(exp.stringRepr)
+			
 			(exp.left as Number).value.assertEquals(2)
 			(exp.right as Parenthesis) => [
 				(exp.left as Number).value.assertEquals(1)
@@ -60,4 +71,55 @@ class MathAssignmentLanguageParsingTest {
 			]	
 		]
 	}
+	
+	@Test
+	def void testRightPlusParenthesis2() {
+		'''
+		result is 2*(1+3)
+		'''.parse => [		
+			println(exp.stringRepr)
+			
+			(exp.left as Number).value.assertEquals(2)
+			(exp.right as Parenthesis) => [
+				(exp.left as Number).value.assertEquals(1)
+				(exp.right as Number).value.assertEquals(3)
+			]	
+		]
+	}
+	
+	@Test
+	def void testRightDivParenthesis() {
+		'''
+		result is 10-2*(1/2)
+		'''.parse => [		
+			println(exp.stringRepr)
+			
+			(exp.left as Number).value.assertEquals(10)
+			(exp.right as Exp) => [
+				(left as Number).value.assertEquals(2)
+				(right as Parenthesis) => [
+					(exp.left as Number).value.assertEquals(1)
+					(exp.right as Number).value.assertEquals(2)
+				]
+			]	
+		]
+	}
+	
+	private def dispatch CharSequence stringRepr(Exp e ) {
+		switch (e.operator) {
+			Plus: '''«e.left.stringRepr»+«e.right.stringRepr»'''
+			Minus: '''«e.left.stringRepr»-«e.right.stringRepr»''' 
+			Mult: '''(«e.left.stringRepr»*«e.right.stringRepr»)'''
+			Div: '''(«e.left.stringRepr»/«e.right.stringRepr»)'''
+		}
+	}
+	
+	private def dispatch CharSequence stringRepr(Number n) {
+		n.value.toString
+	}
+	
+	private def dispatch CharSequence stringRepr(Parenthesis p) {
+		"(" + p.exp.stringRepr + ")"
+	}
+	
 }

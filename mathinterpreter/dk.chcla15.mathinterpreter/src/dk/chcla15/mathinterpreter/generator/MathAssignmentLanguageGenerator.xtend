@@ -37,11 +37,11 @@ override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorCo
 	// Note: written according to illegal left-recursive grammar, requires fix
 	//
 	
-	def int compute(MathExp math) { 
+	def double compute(MathExp math) { 
 		math.exp.computeExp
 	}
 	
-	def dispatch int computeExp(Exp exp) {			
+	def dispatch double computeExp(Exp exp) {			
 		val left = exp.left.computeExp
 		switch exp.operator {
 			Plus: left+exp.right.computeExp
@@ -52,11 +52,11 @@ override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorCo
 		}
 	}
 	
-	def dispatch int computeExp(Number n) {
+	def dispatch double computeExp(Number n) {
 		n.value
 	}
 	
-	def dispatch int computeExp(Parenthesis n) {
+	def dispatch double computeExp(Parenthesis n) {
 		n.exp.computeExp
 	}
 
