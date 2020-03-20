@@ -12,7 +12,6 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus;
-import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -42,10 +41,10 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     return this.computeExp(math.getExp());
   }
   
-  public int computeExp(final Exp exp) {
+  protected int _computeExp(final Exp exp) {
     int _xblockexpression = (int) 0;
     {
-      final int left = this.computePrim(exp.getLeft());
+      final int left = this.computeExp(exp.getLeft());
       int _switchResult = (int) 0;
       ExpOp _operator = exp.getOperator();
       boolean _matched = false;
@@ -83,23 +82,12 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     return _xblockexpression;
   }
   
-  public int computePrim(final Primary factor) {
-    int _switchResult = (int) 0;
-    boolean _matched = false;
-    if (factor instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
-      _matched=true;
-      return ((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)factor).getValue();
-    }
-    if (!_matched) {
-      if (factor instanceof Parenthesis) {
-        _matched=true;
-        _switchResult = this.computeExp(((Parenthesis)factor).getExp());
-      }
-    }
-    if (!_matched) {
-      _switchResult = 0;
-    }
-    return _switchResult;
+  protected int _computeExp(final dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number n) {
+    return n.getValue();
+  }
+  
+  protected int _computeExp(final Parenthesis n) {
+    return this.computeExp(n.getExp());
   }
   
   public CharSequence display(final MathExp math) {
@@ -111,11 +99,11 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  public CharSequence displayExp(final Exp exp) {
+  protected CharSequence _displayExp(final Exp exp) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Exp[");
-    CharSequence _displayPrim = this.displayPrim(exp.getLeft());
-    _builder.append(_displayPrim);
+    CharSequence _displayExp = this.displayExp(exp.getLeft());
+    _builder.append(_displayExp);
     _builder.append(",");
     ExpOp _operator = exp.getOperator();
     String _displayOp = null;
@@ -125,29 +113,21 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     _builder.append(_displayOp);
     _builder.append(",");
     Exp _right = exp.getRight();
-    CharSequence _displayExp = null;
+    CharSequence _displayExp_1 = null;
     if (_right!=null) {
-      _displayExp=this.displayExp(_right);
+      _displayExp_1=this.displayExp(_right);
     }
-    _builder.append(_displayExp);
+    _builder.append(_displayExp_1);
     _builder.append("]");
     return _builder;
   }
   
-  public CharSequence displayPrim(final Primary primary) {
-    CharSequence _switchResult = null;
-    boolean _matched = false;
-    if (primary instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
-      _matched=true;
-      _switchResult = Integer.valueOf(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)primary).getValue()).toString();
-    }
-    if (!_matched) {
-      if (primary instanceof Parenthesis) {
-        _matched=true;
-        _switchResult = this.displayExp(((Parenthesis)primary).getExp());
-      }
-    }
-    return _switchResult;
+  protected CharSequence _displayExp(final dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number n) {
+    return Integer.valueOf(n.getValue()).toString();
+  }
+  
+  protected CharSequence _displayExp(final Parenthesis p) {
+    return this.displayExp(p.getExp());
   }
   
   protected String _displayOp(final Plus op) {
@@ -166,22 +146,30 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     return "/";
   }
   
-  public CharSequence displayFactor(final Primary primary) {
-    String _switchResult = null;
-    boolean _matched = false;
-    if (primary instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
-      _matched=true;
-      _switchResult = Integer.valueOf(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)primary).getValue()).toString();
+  public int computeExp(final Exp n) {
+    if (n instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
+      return _computeExp((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)n);
+    } else if (n instanceof Parenthesis) {
+      return _computeExp((Parenthesis)n);
+    } else if (n != null) {
+      return _computeExp(n);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(n).toString());
     }
-    if (!_matched) {
-      if (primary instanceof Parenthesis) {
-        _matched=true;
-        CharSequence _displayExp = this.displayExp(((Parenthesis)primary).getExp());
-        String _plus = ("(" + _displayExp);
-        _switchResult = (_plus + ")");
-      }
+  }
+  
+  public CharSequence displayExp(final Exp n) {
+    if (n instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
+      return _displayExp((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)n);
+    } else if (n instanceof Parenthesis) {
+      return _displayExp((Parenthesis)n);
+    } else if (n != null) {
+      return _displayExp(n);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(n).toString());
     }
-    return _switchResult;
   }
   
   public String displayOp(final ExpOp op) {

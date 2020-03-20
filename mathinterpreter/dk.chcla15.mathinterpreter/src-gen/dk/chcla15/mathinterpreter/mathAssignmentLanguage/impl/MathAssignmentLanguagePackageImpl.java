@@ -13,7 +13,6 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus;
-import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -56,27 +55,6 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass primaryEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass parenthesisEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass numberEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass plusEClass = null;
 
   /**
@@ -99,6 +77,20 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
    * @generated
    */
   private EClass divEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numberEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parenthesisEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -246,61 +238,6 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
    * @generated
    */
   @Override
-  public EClass getPrimary()
-  {
-    return primaryEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getParenthesis()
-  {
-    return parenthesisEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getParenthesis_Exp()
-  {
-    return (EReference)parenthesisEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getNumber()
-  {
-    return numberEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getNumber_Value()
-  {
-    return (EAttribute)numberEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getPlus()
   {
     return plusEClass;
@@ -345,6 +282,50 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
    * @generated
    */
   @Override
+  public EClass getNumber()
+  {
+    return numberEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNumber_Value()
+  {
+    return (EAttribute)numberEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getParenthesis()
+  {
+    return parenthesisEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getParenthesis_Exp()
+  {
+    return (EReference)parenthesisEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public MathAssignmentLanguageFactory getMathAssignmentLanguageFactory()
   {
     return (MathAssignmentLanguageFactory)getEFactoryInstance();
@@ -380,14 +361,6 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
 
     expOpEClass = createEClass(EXP_OP);
 
-    primaryEClass = createEClass(PRIMARY);
-
-    parenthesisEClass = createEClass(PARENTHESIS);
-    createEReference(parenthesisEClass, PARENTHESIS__EXP);
-
-    numberEClass = createEClass(NUMBER);
-    createEAttribute(numberEClass, NUMBER__VALUE);
-
     plusEClass = createEClass(PLUS);
 
     minusEClass = createEClass(MINUS);
@@ -395,6 +368,12 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
     multEClass = createEClass(MULT);
 
     divEClass = createEClass(DIV);
+
+    numberEClass = createEClass(NUMBER);
+    createEAttribute(numberEClass, NUMBER__VALUE);
+
+    parenthesisEClass = createEClass(PARENTHESIS);
+    createEReference(parenthesisEClass, PARENTHESIS__EXP);
   }
 
   /**
@@ -426,31 +405,23 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    parenthesisEClass.getESuperTypes().add(this.getPrimary());
-    numberEClass.getESuperTypes().add(this.getPrimary());
     plusEClass.getESuperTypes().add(this.getExpOp());
     minusEClass.getESuperTypes().add(this.getExpOp());
     multEClass.getESuperTypes().add(this.getExpOp());
     divEClass.getESuperTypes().add(this.getExpOp());
+    numberEClass.getESuperTypes().add(this.getExp());
+    parenthesisEClass.getESuperTypes().add(this.getExp());
 
     // Initialize classes and features; add operations and parameters
     initEClass(mathExpEClass, MathExp.class, "MathExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMathExp_Exp(), this.getExp(), null, "exp", null, 0, 1, MathExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expEClass, Exp.class, "Exp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getExp_Left(), this.getPrimary(), null, "left", null, 0, 1, Exp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExp_Left(), this.getExp(), null, "left", null, 0, 1, Exp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExp_Operator(), this.getExpOp(), null, "operator", null, 0, 1, Exp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExp_Right(), this.getExp(), null, "right", null, 0, 1, Exp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expOpEClass, ExpOp.class, "ExpOp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(primaryEClass, Primary.class, "Primary", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(parenthesisEClass, Parenthesis.class, "Parenthesis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParenthesis_Exp(), this.getExp(), null, "exp", null, 0, 1, Parenthesis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(numberEClass, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number.class, "Number", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNumber_Value(), ecorePackage.getEInt(), "value", null, 0, 1, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(plusEClass, Plus.class, "Plus", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -459,6 +430,12 @@ public class MathAssignmentLanguagePackageImpl extends EPackageImpl implements M
     initEClass(multEClass, Mult.class, "Mult", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(divEClass, Div.class, "Div", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(numberEClass, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number.class, "Number", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumber_Value(), ecorePackage.getEInt(), "value", null, 0, 1, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parenthesisEClass, Parenthesis.class, "Parenthesis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParenthesis_Exp(), this.getExp(), null, "exp", null, 0, 1, Parenthesis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

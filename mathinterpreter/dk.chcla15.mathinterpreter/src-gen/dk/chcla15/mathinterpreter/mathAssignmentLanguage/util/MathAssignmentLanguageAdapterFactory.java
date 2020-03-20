@@ -12,7 +12,6 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus;
-import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -100,21 +99,6 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
         return createExpOpAdapter();
       }
       @Override
-      public Adapter casePrimary(Primary object)
-      {
-        return createPrimaryAdapter();
-      }
-      @Override
-      public Adapter caseParenthesis(Parenthesis object)
-      {
-        return createParenthesisAdapter();
-      }
-      @Override
-      public Adapter caseNumber(dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number object)
-      {
-        return createNumberAdapter();
-      }
-      @Override
       public Adapter casePlus(Plus object)
       {
         return createPlusAdapter();
@@ -133,6 +117,16 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
       public Adapter caseDiv(Div object)
       {
         return createDivAdapter();
+      }
+      @Override
+      public Adapter caseNumber(dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number object)
+      {
+        return createNumberAdapter();
+      }
+      @Override
+      public Adapter caseParenthesis(Parenthesis object)
+      {
+        return createParenthesisAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -202,51 +196,6 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary <em>Primary</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary
-   * @generated
-   */
-  public Adapter createPrimaryAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis <em>Parenthesis</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
-   * @generated
-   */
-  public Adapter createParenthesisAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number <em>Number</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
-   * @generated
-   */
-  public Adapter createNumberAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus <em>Plus</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -302,6 +251,36 @@ public class MathAssignmentLanguageAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createDivAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number <em>Number</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
+   * @generated
+   */
+  public Adapter createNumberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis <em>Parenthesis</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
+   * @generated
+   */
+  public Adapter createParenthesisAdapter()
   {
     return null;
   }

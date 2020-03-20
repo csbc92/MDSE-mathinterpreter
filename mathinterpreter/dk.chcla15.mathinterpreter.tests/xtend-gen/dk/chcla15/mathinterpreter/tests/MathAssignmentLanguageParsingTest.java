@@ -4,17 +4,19 @@
 package dk.chcla15.mathinterpreter.tests;
 
 import com.google.inject.Inject;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Exp;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.MathExp;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
 import dk.chcla15.mathinterpreter.tests.MathAssignmentLanguageInjectorProvider;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.junit.jupiter.api.Assertions;
+import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -23,23 +25,82 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @SuppressWarnings("all")
 public class MathAssignmentLanguageParsingTest {
   @Inject
+  @Extension
   private ParseHelper<MathExp> parseHelper;
   
   @Test
-  public void loadModel() {
+  public void testParsingExpression() {
+    try {
+      Assert.assertNotNull(this.parseHelper.parse("result is 10"));
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testPlusTwoNumbers() {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
+      _builder.append("result is 10+10");
       _builder.newLine();
-      final MathExp result = this.parseHelper.parse(_builder);
-      Assertions.assertNotNull(result);
-      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      boolean _isEmpty = errors.isEmpty();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder_1.append(_join);
-      Assertions.assertTrue(_isEmpty, _builder_1.toString());
+      MathExp _parse = this.parseHelper.parse(_builder);
+      final Procedure1<MathExp> _function = (MathExp it) -> {
+        Exp _left = it.getExp().getLeft();
+        Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left).getValue(), 10);
+        Exp _right = it.getExp().getRight();
+        Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _right).getValue(), 10);
+      };
+      ObjectExtensions.<MathExp>operator_doubleArrow(_parse, _function);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testLeftPlusParenthesis() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("result is (2+1)+3");
+      _builder.newLine();
+      MathExp _parse = this.parseHelper.parse(_builder);
+      final Procedure1<MathExp> _function = (MathExp it) -> {
+        Exp _left = it.getExp().getLeft();
+        final Procedure1<Parenthesis> _function_1 = (Parenthesis it_1) -> {
+          Exp _left_1 = it_1.getExp().getLeft();
+          Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left_1).getValue(), 2);
+          Exp _right = it_1.getExp().getRight();
+          Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _right).getValue(), 1);
+        };
+        ObjectExtensions.<Parenthesis>operator_doubleArrow(((Parenthesis) _left), _function_1);
+        Exp _right = it.getExp().getRight();
+        Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _right).getValue(), 3);
+      };
+      ObjectExtensions.<MathExp>operator_doubleArrow(_parse, _function);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testRightPlusParenthesis() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("result is 2+(1+3)");
+      _builder.newLine();
+      MathExp _parse = this.parseHelper.parse(_builder);
+      final Procedure1<MathExp> _function = (MathExp it) -> {
+        Exp _left = it.getExp().getLeft();
+        Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left).getValue(), 2);
+        Exp _right = it.getExp().getRight();
+        final Procedure1<Parenthesis> _function_1 = (Parenthesis it_1) -> {
+          Exp _left_1 = it_1.getExp().getLeft();
+          Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _left_1).getValue(), 1);
+          Exp _right_1 = it_1.getExp().getRight();
+          Assert.assertEquals(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) _right_1).getValue(), 3);
+        };
+        ObjectExtensions.<Parenthesis>operator_doubleArrow(((Parenthesis) _right), _function_1);
+      };
+      ObjectExtensions.<MathExp>operator_doubleArrow(_parse, _function);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

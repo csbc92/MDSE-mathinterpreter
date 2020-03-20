@@ -15,16 +15,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MathAssignmentLanguage.ecore#//Exp/right"/>
     </genClasses>
     <genClasses ecoreClass="MathAssignmentLanguage.ecore#//ExpOp"/>
-    <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Primary"/>
-    <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Parenthesis">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MathAssignmentLanguage.ecore#//Parenthesis/exp"/>
-    </genClasses>
-    <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Number">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MathAssignmentLanguage.ecore#//Number/value"/>
-    </genClasses>
     <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Plus"/>
     <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Minus"/>
     <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Mult"/>
     <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Div"/>
+    <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Number">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MathAssignmentLanguage.ecore#//Number/value"/>
+    </genClasses>
+    <genClasses ecoreClass="MathAssignmentLanguage.ecore#//Parenthesis">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MathAssignmentLanguage.ecore#//Parenthesis/exp"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

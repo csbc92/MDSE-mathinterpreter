@@ -14,7 +14,6 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Exp
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Div
-import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
 
@@ -42,8 +41,8 @@ override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorCo
 		math.exp.computeExp
 	}
 	
-	def int computeExp(Exp exp) {
-		val left = exp.left.computePrim
+	def dispatch int computeExp(Exp exp) {			
+		val left = exp.left.computeExp
 		switch exp.operator {
 			Plus: left+exp.right.computeExp
 			Minus: left-exp.right.computeExp
@@ -53,12 +52,12 @@ override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorCo
 		}
 	}
 	
-	def int computePrim(Primary factor) { 
-		switch (factor) {
-			Number: return factor.value
-			Parenthesis: factor.exp.computeExp
-			default: 0
-		}
+	def dispatch int computeExp(Number n) {
+		n.value
+	}
+	
+	def dispatch int computeExp(Parenthesis n) {
+		n.exp.computeExp
 	}
 
 	//
@@ -70,15 +69,16 @@ override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorCo
 		'''Math[«math.exp.displayExp»]'''
 	}
 	
-	def CharSequence displayExp(Exp exp) {
-		'''Exp[«exp.left.displayPrim»,«exp.operator?.displayOp»,«exp.right?.displayExp»]'''
+	def dispatch CharSequence displayExp(Exp exp) {
+		'''Exp[«exp.left.displayExp»,«exp.operator?.displayOp»,«exp.right?.displayExp»]'''
 	}
-		
-	def CharSequence displayPrim(Primary primary) {
-		switch (primary) {
-			Number: primary.value.toString
-			Parenthesis: primary.exp.displayExp
-		}
+	
+	def dispatch CharSequence displayExp(Number n) {
+		n.value.toString
+	}
+	
+	def dispatch CharSequence displayExp(Parenthesis p) {
+		p.exp.displayExp
 	}
 	
 	def dispatch String displayOp(Plus op)  {
@@ -92,11 +92,5 @@ override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorCo
 	}
 	def dispatch String displayOp(Div op)  {
 		"/" 
-	}
-	def CharSequence displayFactor(Primary primary) {
-		switch (primary) {
-			Number: primary.value.toString
-			Parenthesis: "(" + primary.exp.displayExp + ")"
-		}
 	}
 }

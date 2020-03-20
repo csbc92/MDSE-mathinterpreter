@@ -5,26 +5,59 @@ package dk.chcla15.mathinterpreter.tests
 
 import com.google.inject.Inject
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.MathExp
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.jupiter.api.Assertions
+import static extension org.junit.Assert.*;
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.^extension.ExtendWith
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
 
 @ExtendWith(InjectionExtension)
 @InjectWith(MathAssignmentLanguageInjectorProvider)
 class MathAssignmentLanguageParsingTest {
 	@Inject
-	ParseHelper<MathExp> parseHelper
+	extension ParseHelper<MathExp> parseHelper
 	
 	@Test
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assertions.assertNotNull(result)
-		val errors = result.eResource.errors
-		Assertions.assertTrue(errors.isEmpty, '''Unexpected errors: «errors.join(", ")»''')
+	def void testParsingExpression() {
+		"result is 10".parse.assertNotNull
+	}
+	
+	@Test
+	def void testPlusTwoNumbers() {
+		'''
+		result is 10+10
+		'''.parse => [
+			(exp.left as Number).value.assertEquals(10)			
+			(exp.right as Number).value.assertEquals(10)
+		]
+	}
+	
+	@Test
+	def void testLeftPlusParenthesis() {
+		'''
+		result is (2+1)+3
+		'''.parse => [
+			(exp.left as Parenthesis) => [
+				(exp.left as Number).value.assertEquals(2)
+				(exp.right as Number).value.assertEquals(1)
+			]			
+			(exp.right as Number).value.assertEquals(3)
+		]
+	}
+	
+	@Test
+	def void testRightPlusParenthesis() {
+		'''
+		result is 2+(1+3)
+		'''.parse => [		
+			(exp.left as Number).value.assertEquals(2)
+			(exp.right as Parenthesis) => [
+				(exp.left as Number).value.assertEquals(1)
+				(exp.right as Number).value.assertEquals(3)
+			]	
+		]
 	}
 }

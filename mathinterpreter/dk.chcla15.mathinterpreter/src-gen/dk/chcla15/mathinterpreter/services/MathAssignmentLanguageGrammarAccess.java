@@ -53,41 +53,43 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	public class ExpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.Exp");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cLeftAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cLeftPrimaryParserRuleCall_0_0 = (RuleCall)cLeftAssignment_0.eContents().get(0);
+		private final RuleCall cPrimaryParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Assignment cOperatorAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cOperatorExpOpParserRuleCall_1_0_0 = (RuleCall)cOperatorAssignment_1_0.eContents().get(0);
-		private final Assignment cRightAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cRightExpParserRuleCall_1_1_0 = (RuleCall)cRightAssignment_1_1.eContents().get(0);
+		private final Action cExpLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cOperatorExpOpParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
+		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cRightExpParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//Exp:
-		//	left=Primary (operator=ExpOp right=Exp)?;
+		//	Primary ({Exp.left=current} operator=ExpOp right=Exp)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//left=Primary (operator=ExpOp right=Exp)?
+		////left=Primary (operator=ExpOp right=Exp)?
+		//Primary ({Exp.left=current} operator=ExpOp right=Exp)?
 		public Group getGroup() { return cGroup; }
 		
-		//left=Primary
-		public Assignment getLeftAssignment_0() { return cLeftAssignment_0; }
-		
+		////left=Primary (operator=ExpOp right=Exp)?
 		//Primary
-		public RuleCall getLeftPrimaryParserRuleCall_0_0() { return cLeftPrimaryParserRuleCall_0_0; }
+		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//(operator=ExpOp right=Exp)?
+		//({Exp.left=current} operator=ExpOp right=Exp)?
 		public Group getGroup_1() { return cGroup_1; }
 		
+		//{Exp.left=current}
+		public Action getExpLeftAction_1_0() { return cExpLeftAction_1_0; }
+		
 		//operator=ExpOp
-		public Assignment getOperatorAssignment_1_0() { return cOperatorAssignment_1_0; }
+		public Assignment getOperatorAssignment_1_1() { return cOperatorAssignment_1_1; }
 		
 		//ExpOp
-		public RuleCall getOperatorExpOpParserRuleCall_1_0_0() { return cOperatorExpOpParserRuleCall_1_0_0; }
+		public RuleCall getOperatorExpOpParserRuleCall_1_1_0() { return cOperatorExpOpParserRuleCall_1_1_0; }
 		
 		//right=Exp
-		public Assignment getRightAssignment_1_1() { return cRightAssignment_1_1; }
+		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
 		//Exp
-		public RuleCall getRightExpParserRuleCall_1_1_0() { return cRightExpParserRuleCall_1_1_0; }
+		public RuleCall getRightExpParserRuleCall_1_2_0() { return cRightExpParserRuleCall_1_2_0; }
 	}
 	public class ExpOpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
@@ -151,63 +153,53 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.Primary");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cNumberParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cParenthesisParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cNumberAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cParenthesisAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cExpAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cExpExpParserRuleCall_1_2_0 = (RuleCall)cExpAssignment_1_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
 		
-		//Primary:
-		//	Number | Parenthesis;
+		//Primary Exp:
+		//	{Number} value=INT | {Parenthesis} '(' exp=Exp ')';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Number | Parenthesis
+		//{Number} value=INT | {Parenthesis} '(' exp=Exp ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//Number
-		public RuleCall getNumberParserRuleCall_0() { return cNumberParserRuleCall_0; }
+		//{Number} value=INT
+		public Group getGroup_0() { return cGroup_0; }
 		
-		//Parenthesis
-		public RuleCall getParenthesisParserRuleCall_1() { return cParenthesisParserRuleCall_1; }
-	}
-	public class ParenthesisElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.Parenthesis");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cExpAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cExpExpParserRuleCall_1_0 = (RuleCall)cExpAssignment_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		
-		//Parenthesis:
-		//	'(' exp=Exp ')';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'(' exp=Exp ')'
-		public Group getGroup() { return cGroup; }
-		
-		//'('
-		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
-		
-		//exp=Exp
-		public Assignment getExpAssignment_1() { return cExpAssignment_1; }
-		
-		//Exp
-		public RuleCall getExpExpParserRuleCall_1_0() { return cExpExpParserRuleCall_1_0; }
-		
-		//')'
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
-	}
-	public class NumberElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.Number");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		//Number:
-		//	value=INT;
-		@Override public ParserRule getRule() { return rule; }
+		//{Number}
+		public Action getNumberAction_0_0() { return cNumberAction_0_0; }
 		
 		//value=INT
-		public Assignment getValueAssignment() { return cValueAssignment; }
+		public Assignment getValueAssignment_0_1() { return cValueAssignment_0_1; }
 		
 		//INT
-		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
+		public RuleCall getValueINTTerminalRuleCall_0_1_0() { return cValueINTTerminalRuleCall_0_1_0; }
+		
+		//{Parenthesis} '(' exp=Exp ')'
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Parenthesis}
+		public Action getParenthesisAction_1_0() { return cParenthesisAction_1_0; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_1_1() { return cLeftParenthesisKeyword_1_1; }
+		
+		//exp=Exp
+		public Assignment getExpAssignment_1_2() { return cExpAssignment_1_2; }
+		
+		//Exp
+		public RuleCall getExpExpParserRuleCall_1_2_0() { return cExpExpParserRuleCall_1_2_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_1_3() { return cRightParenthesisKeyword_1_3; }
 	}
 	
 	
@@ -215,8 +207,6 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	private final ExpElements pExp;
 	private final ExpOpElements pExpOp;
 	private final PrimaryElements pPrimary;
-	private final ParenthesisElements pParenthesis;
-	private final NumberElements pNumber;
 	
 	private final Grammar grammar;
 	
@@ -231,8 +221,6 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 		this.pExp = new ExpElements();
 		this.pExpOp = new ExpOpElements();
 		this.pPrimary = new PrimaryElements();
-		this.pParenthesis = new ParenthesisElements();
-		this.pNumber = new NumberElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -273,7 +261,7 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	}
 	
 	//Exp:
-	//	left=Primary (operator=ExpOp right=Exp)?;
+	//	Primary ({Exp.left=current} operator=ExpOp right=Exp)?;
 	public ExpElements getExpAccess() {
 		return pExp;
 	}
@@ -292,34 +280,14 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 		return getExpOpAccess().getRule();
 	}
 	
-	//Primary:
-	//	Number | Parenthesis;
+	//Primary Exp:
+	//	{Number} value=INT | {Parenthesis} '(' exp=Exp ')';
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
 	}
 	
 	public ParserRule getPrimaryRule() {
 		return getPrimaryAccess().getRule();
-	}
-	
-	//Parenthesis:
-	//	'(' exp=Exp ')';
-	public ParenthesisElements getParenthesisAccess() {
-		return pParenthesis;
-	}
-	
-	public ParserRule getParenthesisRule() {
-		return getParenthesisAccess().getRule();
-	}
-	
-	//Number:
-	//	value=INT;
-	public NumberElements getNumberAccess() {
-		return pNumber;
-	}
-	
-	public ParserRule getNumberRule() {
-		return getNumberAccess().getRule();
 	}
 	
 	//terminal ID:

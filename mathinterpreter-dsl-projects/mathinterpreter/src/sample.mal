@@ -1,1 +1,1 @@
-result is 5*2+3 // Yields 25. Incorrect. Needs multiplication and div precedence
+result is 5-2-1 // Yields 25. Incorrect. Needs multiplication and div precedence

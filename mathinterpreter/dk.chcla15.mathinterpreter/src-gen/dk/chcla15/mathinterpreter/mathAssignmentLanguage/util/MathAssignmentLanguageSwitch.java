@@ -12,7 +12,6 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus;
-import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -103,29 +102,6 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case MathAssignmentLanguagePackage.PRIMARY:
-      {
-        Primary primary = (Primary)theEObject;
-        T result = casePrimary(primary);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MathAssignmentLanguagePackage.PARENTHESIS:
-      {
-        Parenthesis parenthesis = (Parenthesis)theEObject;
-        T result = caseParenthesis(parenthesis);
-        if (result == null) result = casePrimary(parenthesis);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case MathAssignmentLanguagePackage.NUMBER:
-      {
-        dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number number = (dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)theEObject;
-        T result = caseNumber(number);
-        if (result == null) result = casePrimary(number);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case MathAssignmentLanguagePackage.PLUS:
       {
         Plus plus = (Plus)theEObject;
@@ -155,6 +131,22 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
         Div div = (Div)theEObject;
         T result = caseDiv(div);
         if (result == null) result = caseExpOp(div);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathAssignmentLanguagePackage.NUMBER:
+      {
+        dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number number = (dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)theEObject;
+        T result = caseNumber(number);
+        if (result == null) result = caseExp(number);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathAssignmentLanguagePackage.PARENTHESIS:
+      {
+        Parenthesis parenthesis = (Parenthesis)theEObject;
+        T result = caseParenthesis(parenthesis);
+        if (result == null) result = caseExp(parenthesis);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -206,54 +198,6 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpOp(ExpOp object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Primary</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Primary</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePrimary(Primary object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParenthesis(Parenthesis object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Number</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Number</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNumber(dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number object)
   {
     return null;
   }
@@ -318,6 +262,38 @@ public class MathAssignmentLanguageSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDiv(Div object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Number</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Number</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumber(dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parenthesis</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParenthesis(Parenthesis object)
   {
     return null;
   }

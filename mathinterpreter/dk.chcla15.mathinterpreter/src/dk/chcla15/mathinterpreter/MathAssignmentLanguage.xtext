@@ -7,21 +7,15 @@ MathExp:
 ;
 
 Exp:
-	left=Primary (operator=ExpOp right=Exp)?
+	//left=Primary (operator=ExpOp right=Exp)?
+	Primary ({Exp.left=current} operator=ExpOp right=Exp)?
 ;
 
 ExpOp:
 	{Plus} '+' | {Minus} '-'	 | {Mult} '*' | {Div} '/'	
 ;
 
-Primary:
-	Number | Parenthesis
-;
-
-Parenthesis:
-	'(' exp=Exp ')'
-;
-
-Number:
-	value=INT
+Primary returns Exp:
+	{Number} value=INT |
+	{Parenthesis} '(' exp=Exp ')'
 ;

@@ -20,7 +20,7 @@ package dk.chcla15.mathinterpreter.mathAssignmentLanguage;
  * @model
  * @generated
  */
-public interface Parenthesis extends Primary
+public interface Parenthesis extends Exp
 {
   /**
    * Returns the value of the '<em><b>Exp</b></em>' containment reference.

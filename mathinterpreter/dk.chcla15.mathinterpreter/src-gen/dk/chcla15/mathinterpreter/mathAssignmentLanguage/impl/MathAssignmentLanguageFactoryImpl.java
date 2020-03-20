@@ -13,7 +13,6 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus;
-import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -78,13 +77,12 @@ public class MathAssignmentLanguageFactoryImpl extends EFactoryImpl implements M
       case MathAssignmentLanguagePackage.MATH_EXP: return createMathExp();
       case MathAssignmentLanguagePackage.EXP: return createExp();
       case MathAssignmentLanguagePackage.EXP_OP: return createExpOp();
-      case MathAssignmentLanguagePackage.PRIMARY: return createPrimary();
-      case MathAssignmentLanguagePackage.PARENTHESIS: return createParenthesis();
-      case MathAssignmentLanguagePackage.NUMBER: return createNumber();
       case MathAssignmentLanguagePackage.PLUS: return createPlus();
       case MathAssignmentLanguagePackage.MINUS: return createMinus();
       case MathAssignmentLanguagePackage.MULT: return createMult();
       case MathAssignmentLanguagePackage.DIV: return createDiv();
+      case MathAssignmentLanguagePackage.NUMBER: return createNumber();
+      case MathAssignmentLanguagePackage.PARENTHESIS: return createParenthesis();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -124,42 +122,6 @@ public class MathAssignmentLanguageFactoryImpl extends EFactoryImpl implements M
   {
     ExpOpImpl expOp = new ExpOpImpl();
     return expOp;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Primary createPrimary()
-  {
-    PrimaryImpl primary = new PrimaryImpl();
-    return primary;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Parenthesis createParenthesis()
-  {
-    ParenthesisImpl parenthesis = new ParenthesisImpl();
-    return parenthesis;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number createNumber()
-  {
-    NumberImpl number = new NumberImpl();
-    return number;
   }
 
   /**
@@ -208,6 +170,30 @@ public class MathAssignmentLanguageFactoryImpl extends EFactoryImpl implements M
   {
     DivImpl div = new DivImpl();
     return div;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number createNumber()
+  {
+    NumberImpl number = new NumberImpl();
+    return number;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Parenthesis createParenthesis()
+  {
+    ParenthesisImpl parenthesis = new ParenthesisImpl();
+    return parenthesis;
   }
 
   /**

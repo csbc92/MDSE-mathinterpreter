@@ -30,12 +30,12 @@ public interface Exp extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
-   * @see #setLeft(Primary)
+   * @see #setLeft(Exp)
    * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.MathAssignmentLanguagePackage#getExp_Left()
    * @model containment="true"
    * @generated
    */
-  Primary getLeft();
+  Exp getLeft();
 
   /**
    * Sets the value of the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Exp#getLeft <em>Left</em>}' containment reference.
@@ -45,7 +45,7 @@ public interface Exp extends EObject
    * @see #getLeft()
    * @generated
    */
-  void setLeft(Primary value);
+  void setLeft(Exp value);
 
   /**
    * Returns the value of the '<em><b>Operator</b></em>' containment reference.

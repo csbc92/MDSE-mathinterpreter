@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class NumberImpl extends PrimaryImpl implements dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
+public class NumberImpl extends ExpImpl implements dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.

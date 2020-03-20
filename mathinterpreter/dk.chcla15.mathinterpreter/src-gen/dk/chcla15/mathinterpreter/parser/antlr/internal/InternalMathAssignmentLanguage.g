@@ -122,32 +122,28 @@ ruleExp returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		{
+			newCompositeNode(grammarAccess.getExpAccess().getPrimaryParserRuleCall_0());
+		}
+		this_Primary_0=rulePrimary
+		{
+			$current = $this_Primary_0.current;
+			afterParserOrEnumRuleCall();
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getExpAccess().getLeftPrimaryParserRuleCall_0_0());
-				}
-				lv_left_0_0=rulePrimary
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getExpRule());
-					}
-					set(
-						$current,
-						"left",
-						lv_left_0_0,
-						"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Primary");
-					afterParserOrEnumRuleCall();
+					$current = forceCreateModelElementAndSet(
+						grammarAccess.getExpAccess().getExpLeftAction_1_0(),
+						$current);
 				}
 			)
-		)
-		(
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_0_0());
+						newCompositeNode(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_1_0());
 					}
-					lv_operator_1_0=ruleExpOp
+					lv_operator_2_0=ruleExpOp
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getExpRule());
@@ -155,7 +151,7 @@ ruleExp returns [EObject current=null]
 						set(
 							$current,
 							"operator",
-							lv_operator_1_0,
+							lv_operator_2_0,
 							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
 						afterParserOrEnumRuleCall();
 					}
@@ -164,9 +160,9 @@ ruleExp returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_1_0());
+						newCompositeNode(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_2_0());
 					}
-					lv_right_2_0=ruleExp
+					lv_right_3_0=ruleExp
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getExpRule());
@@ -174,7 +170,7 @@ ruleExp returns [EObject current=null]
 						set(
 							$current,
 							"right",
-							lv_right_2_0,
+							lv_right_3_0,
 							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Exp");
 						afterParserOrEnumRuleCall();
 					}
@@ -274,102 +270,68 @@ rulePrimary returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		{
-			newCompositeNode(grammarAccess.getPrimaryAccess().getNumberParserRuleCall_0());
-		}
-		this_Number_0=ruleNumber
-		{
-			$current = $this_Number_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getPrimaryAccess().getParenthesisParserRuleCall_1());
-		}
-		this_Parenthesis_1=ruleParenthesis
-		{
-			$current = $this_Parenthesis_1.current;
-			afterParserOrEnumRuleCall();
-		}
-	)
-;
-
-// Entry rule entryRuleParenthesis
-entryRuleParenthesis returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getParenthesisRule()); }
-	iv_ruleParenthesis=ruleParenthesis
-	{ $current=$iv_ruleParenthesis.current; }
-	EOF;
-
-// Rule Parenthesis
-ruleParenthesis returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='('
-		{
-			newLeafNode(otherlv_0, grammarAccess.getParenthesisAccess().getLeftParenthesisKeyword_0());
-		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getParenthesisAccess().getExpExpParserRuleCall_1_0());
-				}
-				lv_exp_1_0=ruleExp
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getParenthesisRule());
-					}
-					set(
-						$current,
-						"exp",
-						lv_exp_1_0,
-						"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Exp");
-					afterParserOrEnumRuleCall();
+					$current = forceCreateModelElement(
+						grammarAccess.getPrimaryAccess().getNumberAction_0_0(),
+						$current);
 				}
 			)
+			(
+				(
+					lv_value_1_0=RULE_INT
+					{
+						newLeafNode(lv_value_1_0, grammarAccess.getPrimaryAccess().getValueINTTerminalRuleCall_0_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPrimaryRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"value",
+							lv_value_1_0,
+							"org.eclipse.xtext.common.Terminals.INT");
+					}
+				)
+			)
 		)
-		otherlv_2=')'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getParenthesisAccess().getRightParenthesisKeyword_2());
-		}
-	)
-;
-
-// Entry rule entryRuleNumber
-entryRuleNumber returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getNumberRule()); }
-	iv_ruleNumber=ruleNumber
-	{ $current=$iv_ruleNumber.current; }
-	EOF;
-
-// Rule Number
-ruleNumber returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
+		    |
 		(
-			lv_value_0_0=RULE_INT
-			{
-				newLeafNode(lv_value_0_0, grammarAccess.getNumberAccess().getValueINTTerminalRuleCall_0());
-			}
-			{
-				if ($current==null) {
-					$current = createModelElement(grammarAccess.getNumberRule());
+			(
+				{
+					$current = forceCreateModelElement(
+						grammarAccess.getPrimaryAccess().getParenthesisAction_1_0(),
+						$current);
 				}
-				setWithLastConsumed(
-					$current,
-					"value",
-					lv_value_0_0,
-					"org.eclipse.xtext.common.Terminals.INT");
+			)
+			otherlv_3='('
+			{
+				newLeafNode(otherlv_3, grammarAccess.getPrimaryAccess().getLeftParenthesisKeyword_1_1());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPrimaryAccess().getExpExpParserRuleCall_1_2_0());
+					}
+					lv_exp_4_0=ruleExp
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPrimaryRule());
+						}
+						set(
+							$current,
+							"exp",
+							lv_exp_4_0,
+							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Exp");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			otherlv_5=')'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getPrimaryAccess().getRightParenthesisKeyword_1_3());
 			}
 		)
 	)

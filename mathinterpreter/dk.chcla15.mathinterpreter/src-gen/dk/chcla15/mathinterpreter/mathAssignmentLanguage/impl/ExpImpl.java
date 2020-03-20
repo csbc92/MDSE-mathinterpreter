@@ -6,7 +6,6 @@ package dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Exp;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.ExpOp;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.MathAssignmentLanguagePackage;
-import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -42,7 +41,7 @@ public class ExpImpl extends MinimalEObjectImpl.Container implements Exp
    * @generated
    * @ordered
    */
-  protected Primary left;
+  protected Exp left;
 
   /**
    * The cached value of the '{@link #getOperator() <em>Operator</em>}' containment reference.
@@ -91,7 +90,7 @@ public class ExpImpl extends MinimalEObjectImpl.Container implements Exp
    * @generated
    */
   @Override
-  public Primary getLeft()
+  public Exp getLeft()
   {
     return left;
   }
@@ -101,9 +100,9 @@ public class ExpImpl extends MinimalEObjectImpl.Container implements Exp
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(Primary newLeft, NotificationChain msgs)
+  public NotificationChain basicSetLeft(Exp newLeft, NotificationChain msgs)
   {
-    Primary oldLeft = left;
+    Exp oldLeft = left;
     left = newLeft;
     if (eNotificationRequired())
     {
@@ -119,7 +118,7 @@ public class ExpImpl extends MinimalEObjectImpl.Container implements Exp
    * @generated
    */
   @Override
-  public void setLeft(Primary newLeft)
+  public void setLeft(Exp newLeft)
   {
     if (newLeft != left)
     {
@@ -286,7 +285,7 @@ public class ExpImpl extends MinimalEObjectImpl.Container implements Exp
     switch (featureID)
     {
       case MathAssignmentLanguagePackage.EXP__LEFT:
-        setLeft((Primary)newValue);
+        setLeft((Exp)newValue);
         return;
       case MathAssignmentLanguagePackage.EXP__OPERATOR:
         setOperator((ExpOp)newValue);
@@ -309,7 +308,7 @@ public class ExpImpl extends MinimalEObjectImpl.Container implements Exp
     switch (featureID)
     {
       case MathAssignmentLanguagePackage.EXP__LEFT:
-        setLeft((Primary)null);
+        setLeft((Exp)null);
         return;
       case MathAssignmentLanguagePackage.EXP__OPERATOR:
         setOperator((ExpOp)null);

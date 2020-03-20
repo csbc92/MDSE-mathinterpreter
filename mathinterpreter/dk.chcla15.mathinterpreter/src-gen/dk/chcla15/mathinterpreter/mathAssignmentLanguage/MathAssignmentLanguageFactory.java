@@ -51,33 +51,6 @@ public interface MathAssignmentLanguageFactory extends EFactory
   ExpOp createExpOp();
 
   /**
-   * Returns a new object of class '<em>Primary</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary</em>'.
-   * @generated
-   */
-  Primary createPrimary();
-
-  /**
-   * Returns a new object of class '<em>Parenthesis</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parenthesis</em>'.
-   * @generated
-   */
-  Parenthesis createParenthesis();
-
-  /**
-   * Returns a new object of class '<em>Number</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Number</em>'.
-   * @generated
-   */
-  Number createNumber();
-
-  /**
    * Returns a new object of class '<em>Plus</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -112,6 +85,24 @@ public interface MathAssignmentLanguageFactory extends EFactory
    * @generated
    */
   Div createDiv();
+
+  /**
+   * Returns a new object of class '<em>Number</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Number</em>'.
+   * @generated
+   */
+  Number createNumber();
+
+  /**
+   * Returns a new object of class '<em>Parenthesis</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parenthesis</em>'.
+   * @generated
+   */
+  Parenthesis createParenthesis();
 
   /**
    * Returns the package supported by this factory.

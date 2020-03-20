@@ -54,10 +54,10 @@ public class MathAssignmentLanguageSemanticSequencer extends AbstractDelegatingS
 				sequence_ExpOp(context, (Mult) semanticObject); 
 				return; 
 			case MathAssignmentLanguagePackage.NUMBER:
-				sequence_Number(context, (dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) semanticObject); 
+				sequence_Primary(context, (dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) semanticObject); 
 				return; 
 			case MathAssignmentLanguagePackage.PARENTHESIS:
-				sequence_Parenthesis(context, (Parenthesis) semanticObject); 
+				sequence_Primary(context, (Parenthesis) semanticObject); 
 				return; 
 			case MathAssignmentLanguagePackage.PLUS:
 				sequence_ExpOp(context, (Plus) semanticObject); 
@@ -120,10 +120,22 @@ public class MathAssignmentLanguageSemanticSequencer extends AbstractDelegatingS
 	 *     Exp returns Exp
 	 *
 	 * Constraint:
-	 *     (left=Primary (operator=ExpOp right=Exp)?)
+	 *     (left=Exp_Exp_1_0 operator=ExpOp right=Exp)
 	 */
 	protected void sequence_Exp(ISerializationContext context, Exp semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, MathAssignmentLanguagePackage.Literals.EXP__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MathAssignmentLanguagePackage.Literals.EXP__LEFT));
+			if (transientValues.isValueTransient(semanticObject, MathAssignmentLanguagePackage.Literals.EXP__OPERATOR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MathAssignmentLanguagePackage.Literals.EXP__OPERATOR));
+			if (transientValues.isValueTransient(semanticObject, MathAssignmentLanguagePackage.Literals.EXP__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MathAssignmentLanguagePackage.Literals.EXP__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpAccess().getExpLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_1_0(), semanticObject.getOperator());
+		feeder.accept(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
@@ -147,38 +159,40 @@ public class MathAssignmentLanguageSemanticSequencer extends AbstractDelegatingS
 	
 	/**
 	 * Contexts:
+	 *     Exp returns Number
+	 *     Exp.Exp_1_0 returns Number
 	 *     Primary returns Number
-	 *     Number returns Number
 	 *
 	 * Constraint:
 	 *     value=INT
 	 */
-	protected void sequence_Number(ISerializationContext context, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number semanticObject) {
+	protected void sequence_Primary(ISerializationContext context, dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MathAssignmentLanguagePackage.Literals.NUMBER__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MathAssignmentLanguagePackage.Literals.NUMBER__VALUE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getNumberAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getPrimaryAccess().getValueINTTerminalRuleCall_0_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     Exp returns Parenthesis
+	 *     Exp.Exp_1_0 returns Parenthesis
 	 *     Primary returns Parenthesis
-	 *     Parenthesis returns Parenthesis
 	 *
 	 * Constraint:
 	 *     exp=Exp
 	 */
-	protected void sequence_Parenthesis(ISerializationContext context, Parenthesis semanticObject) {
+	protected void sequence_Primary(ISerializationContext context, Parenthesis semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, MathAssignmentLanguagePackage.Literals.PARENTHESIS__EXP) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MathAssignmentLanguagePackage.Literals.PARENTHESIS__EXP));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getParenthesisAccess().getExpExpParserRuleCall_1_0(), semanticObject.getExp());
+		feeder.accept(grammarAccess.getPrimaryAccess().getExpExpParserRuleCall_1_2_0(), semanticObject.getExp());
 		feeder.finish();
 	}
 	

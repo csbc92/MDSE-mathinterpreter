@@ -151,81 +151,6 @@ public interface MathAssignmentLanguagePackage extends EPackage
   int EXP_OP_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PrimaryImpl <em>Primary</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PrimaryImpl
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getPrimary()
-   * @generated
-   */
-  int PRIMARY = 3;
-
-  /**
-   * The number of structural features of the '<em>Primary</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl <em>Parenthesis</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getParenthesis()
-   * @generated
-   */
-  int PARENTHESIS = 4;
-
-  /**
-   * The feature id for the '<em><b>Exp</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARENTHESIS__EXP = PRIMARY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Parenthesis</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARENTHESIS_FEATURE_COUNT = PRIMARY_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl <em>Number</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getNumber()
-   * @generated
-   */
-  int NUMBER = 5;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER__VALUE = PRIMARY_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Number</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NUMBER_FEATURE_COUNT = PRIMARY_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl <em>Plus</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -233,7 +158,7 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 6;
+  int PLUS = 3;
 
   /**
    * The number of structural features of the '<em>Plus</em>' class.
@@ -252,7 +177,7 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 7;
+  int MINUS = 4;
 
   /**
    * The number of structural features of the '<em>Minus</em>' class.
@@ -271,7 +196,7 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getMult()
    * @generated
    */
-  int MULT = 8;
+  int MULT = 5;
 
   /**
    * The number of structural features of the '<em>Mult</em>' class.
@@ -290,7 +215,7 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getDiv()
    * @generated
    */
-  int DIV = 9;
+  int DIV = 6;
 
   /**
    * The number of structural features of the '<em>Div</em>' class.
@@ -300,6 +225,116 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @ordered
    */
   int DIV_FEATURE_COUNT = EXP_OP_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl <em>Number</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getNumber()
+   * @generated
+   */
+  int NUMBER = 7;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER__LEFT = EXP__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER__OPERATOR = EXP__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER__RIGHT = EXP__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER__VALUE = EXP_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Number</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER_FEATURE_COUNT = EXP_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl <em>Parenthesis</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getParenthesis()
+   * @generated
+   */
+  int PARENTHESIS = 8;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS__LEFT = EXP__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS__OPERATOR = EXP__OPERATOR;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS__RIGHT = EXP__RIGHT;
+
+  /**
+   * The feature id for the '<em><b>Exp</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS__EXP = EXP_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Parenthesis</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENTHESIS_FEATURE_COUNT = EXP_FEATURE_COUNT + 1;
 
 
   /**
@@ -377,58 +412,6 @@ public interface MathAssignmentLanguagePackage extends EPackage
   EClass getExpOp();
 
   /**
-   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary <em>Primary</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Primary</em>'.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary
-   * @generated
-   */
-  EClass getPrimary();
-
-  /**
-   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis <em>Parenthesis</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Parenthesis</em>'.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
-   * @generated
-   */
-  EClass getParenthesis();
-
-  /**
-   * Returns the meta object for the containment reference '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis#getExp <em>Exp</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Exp</em>'.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis#getExp()
-   * @see #getParenthesis()
-   * @generated
-   */
-  EReference getParenthesis_Exp();
-
-  /**
-   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number <em>Number</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Number</em>'.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
-   * @generated
-   */
-  EClass getNumber();
-
-  /**
-   * Returns the meta object for the attribute '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number#getValue()
-   * @see #getNumber()
-   * @generated
-   */
-  EAttribute getNumber_Value();
-
-  /**
    * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus <em>Plus</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -467,6 +450,48 @@ public interface MathAssignmentLanguagePackage extends EPackage
    * @generated
    */
   EClass getDiv();
+
+  /**
+   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number <em>Number</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Number</em>'.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
+   * @generated
+   */
+  EClass getNumber();
+
+  /**
+   * Returns the meta object for the attribute '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number#getValue()
+   * @see #getNumber()
+   * @generated
+   */
+  EAttribute getNumber_Value();
+
+  /**
+   * Returns the meta object for class '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis <em>Parenthesis</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parenthesis</em>'.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
+   * @generated
+   */
+  EClass getParenthesis();
+
+  /**
+   * Returns the meta object for the containment reference '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis#getExp <em>Exp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Exp</em>'.
+   * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis#getExp()
+   * @see #getParenthesis()
+   * @generated
+   */
+  EReference getParenthesis_Exp();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -554,52 +579,6 @@ public interface MathAssignmentLanguagePackage extends EPackage
     EClass EXP_OP = eINSTANCE.getExpOp();
 
     /**
-     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PrimaryImpl <em>Primary</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PrimaryImpl
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getPrimary()
-     * @generated
-     */
-    EClass PRIMARY = eINSTANCE.getPrimary();
-
-    /**
-     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl <em>Parenthesis</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getParenthesis()
-     * @generated
-     */
-    EClass PARENTHESIS = eINSTANCE.getParenthesis();
-
-    /**
-     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PARENTHESIS__EXP = eINSTANCE.getParenthesis_Exp();
-
-    /**
-     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl <em>Number</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl
-     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getNumber()
-     * @generated
-     */
-    EClass NUMBER = eINSTANCE.getNumber();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute NUMBER__VALUE = eINSTANCE.getNumber_Value();
-
-    /**
      * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.PlusImpl <em>Plus</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -638,6 +617,42 @@ public interface MathAssignmentLanguagePackage extends EPackage
      * @generated
      */
     EClass DIV = eINSTANCE.getDiv();
+
+    /**
+     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl <em>Number</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.NumberImpl
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getNumber()
+     * @generated
+     */
+    EClass NUMBER = eINSTANCE.getNumber();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute NUMBER__VALUE = eINSTANCE.getNumber_Value();
+
+    /**
+     * The meta object literal for the '{@link dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl <em>Parenthesis</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.ParenthesisImpl
+     * @see dk.chcla15.mathinterpreter.mathAssignmentLanguage.impl.MathAssignmentLanguagePackageImpl#getParenthesis()
+     * @generated
+     */
+    EClass PARENTHESIS = eINSTANCE.getParenthesis();
+
+    /**
+     * The meta object literal for the '<em><b>Exp</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARENTHESIS__EXP = eINSTANCE.getParenthesis_Exp();
 
   }
 
