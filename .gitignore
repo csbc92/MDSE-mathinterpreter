@@ -4,8 +4,8 @@
 
 ### xtend/xtext ###
 *.xtendbin
-xtend-gen/*
-src-gen/*
+**/xtend-gen/*
+**/src-gen/*
 
 ### Eclipse ###
 .metadata
