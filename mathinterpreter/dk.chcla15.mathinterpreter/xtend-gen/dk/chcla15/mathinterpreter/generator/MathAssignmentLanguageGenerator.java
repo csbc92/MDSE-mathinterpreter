@@ -10,6 +10,7 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.ExpOp;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.MathExp;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult;
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Plus;
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary;
 import java.util.Arrays;
@@ -83,7 +84,22 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
   }
   
   public int computePrim(final Primary factor) {
-    return 87;
+    int _switchResult = (int) 0;
+    boolean _matched = false;
+    if (factor instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
+      _matched=true;
+      return ((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)factor).getValue();
+    }
+    if (!_matched) {
+      if (factor instanceof Parenthesis) {
+        _matched=true;
+        _switchResult = this.computeExp(((Parenthesis)factor).getExp());
+      }
+    }
+    if (!_matched) {
+      _switchResult = 0;
+    }
+    return _switchResult;
   }
   
   public CharSequence display(final MathExp math) {
@@ -96,8 +112,42 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
   }
   
   public CharSequence displayExp(final Exp exp) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field displayPrim is undefined for the type Primary");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Exp[");
+    CharSequence _displayPrim = this.displayPrim(exp.getLeft());
+    _builder.append(_displayPrim);
+    _builder.append(",");
+    ExpOp _operator = exp.getOperator();
+    String _displayOp = null;
+    if (_operator!=null) {
+      _displayOp=this.displayOp(_operator);
+    }
+    _builder.append(_displayOp);
+    _builder.append(",");
+    Exp _right = exp.getRight();
+    CharSequence _displayExp = null;
+    if (_right!=null) {
+      _displayExp=this.displayExp(_right);
+    }
+    _builder.append(_displayExp);
+    _builder.append("]");
+    return _builder;
+  }
+  
+  public CharSequence displayPrim(final Primary primary) {
+    CharSequence _switchResult = null;
+    boolean _matched = false;
+    if (primary instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
+      _matched=true;
+      _switchResult = Integer.valueOf(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)primary).getValue()).toString();
+    }
+    if (!_matched) {
+      if (primary instanceof Parenthesis) {
+        _matched=true;
+        _switchResult = this.displayExp(((Parenthesis)primary).getExp());
+      }
+    }
+    return _switchResult;
   }
   
   protected String _displayOp(final Plus op) {
@@ -108,13 +158,39 @@ public class MathAssignmentLanguageGenerator extends AbstractGenerator {
     return "-";
   }
   
+  protected String _displayOp(final Mult op) {
+    return "*";
+  }
+  
+  protected String _displayOp(final Div op) {
+    return "/";
+  }
+  
   public CharSequence displayFactor(final Primary primary) {
-    return "?";
+    String _switchResult = null;
+    boolean _matched = false;
+    if (primary instanceof dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number) {
+      _matched=true;
+      _switchResult = Integer.valueOf(((dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number)primary).getValue()).toString();
+    }
+    if (!_matched) {
+      if (primary instanceof Parenthesis) {
+        _matched=true;
+        CharSequence _displayExp = this.displayExp(((Parenthesis)primary).getExp());
+        String _plus = ("(" + _displayExp);
+        _switchResult = (_plus + ")");
+      }
+    }
+    return _switchResult;
   }
   
   public String displayOp(final ExpOp op) {
-    if (op instanceof Minus) {
+    if (op instanceof Div) {
+      return _displayOp((Div)op);
+    } else if (op instanceof Minus) {
       return _displayOp((Minus)op);
+    } else if (op instanceof Mult) {
+      return _displayOp((Mult)op);
     } else if (op instanceof Plus) {
       return _displayOp((Plus)op);
     } else {

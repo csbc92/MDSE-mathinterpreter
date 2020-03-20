@@ -6,8 +6,8 @@ MathExp:
 	'result' 'is' exp=Exp
 ;
 
-Exp: // Illegal due to left recursion
-	left=Exp (operator=ExpOp right=Exp)?
+Exp:
+	left=Primary (operator=ExpOp right=Exp)?
 ;
 
 ExpOp:

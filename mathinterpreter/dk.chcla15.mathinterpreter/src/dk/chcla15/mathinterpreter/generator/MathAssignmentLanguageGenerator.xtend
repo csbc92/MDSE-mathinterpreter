@@ -15,7 +15,8 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Minus
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Mult
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Div
 import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary
-
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Parenthesis
+import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Number
 
 /**
  * Generates code from your model files on save.
@@ -24,7 +25,7 @@ import dk.chcla15.mathinterpreter.mathAssignmentLanguage.Primary
  */
 class MathAssignmentLanguageGenerator extends AbstractGenerator {
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val math = resource.allContents.filter(MathExp).next
 		val result = math.compute
 		System.out.println("Math expression = "+math.display)
@@ -53,7 +54,11 @@ class MathAssignmentLanguageGenerator extends AbstractGenerator {
 	}
 	
 	def int computePrim(Primary factor) { 
-		87
+		switch (factor) {
+			Number: return factor.value
+			Parenthesis: factor.exp.computeExp
+			default: 0
+		}
 	}
 
 	//
@@ -61,11 +66,37 @@ class MathAssignmentLanguageGenerator extends AbstractGenerator {
 	// Note: written according to illegal left-recursive grammar, requires fix
 	//
 
-	def CharSequence display(MathExp math) '''Math[«math.exp.displayExp»]'''
-	def CharSequence displayExp(Exp exp) '''Exp[«exp.left.displayPrim»,«exp.operator?.displayOp»,«exp.right?.displayExp»]'''
-	def dispatch String displayOp(Plus op)  { "+" }
-	def dispatch String displayOp(Minus op) { "-" }
-	def CharSequence displayFactor(Primary primary) { "?" }
+	def CharSequence display(MathExp math){
+		'''Math[«math.exp.displayExp»]'''
+	}
 	
+	def CharSequence displayExp(Exp exp) {
+		'''Exp[«exp.left.displayPrim»,«exp.operator?.displayOp»,«exp.right?.displayExp»]'''
+	}
 		
+	def CharSequence displayPrim(Primary primary) {
+		switch (primary) {
+			Number: primary.value.toString
+			Parenthesis: primary.exp.displayExp
+		}
+	}
+	
+	def dispatch String displayOp(Plus op)  {
+		"+" 
+	}
+	def dispatch String displayOp(Minus op) {
+		"-"
+	}
+	def dispatch String displayOp(Mult op)  {
+		"*" 
+	}
+	def dispatch String displayOp(Div op)  {
+		"/" 
+	}
+	def CharSequence displayFactor(Primary primary) {
+		switch (primary) {
+			Number: primary.value.toString
+			Parenthesis: "(" + primary.exp.displayExp + ")"
+		}
+	}
 }
