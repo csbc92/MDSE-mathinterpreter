@@ -1,1 +1,1 @@
-result is 5-2-1 // Yields 25. Incorrect. Needs multiplication and div precedence
+result is 5-2-1 // Should yield 2 due to left associativity

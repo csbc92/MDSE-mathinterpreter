@@ -233,7 +233,7 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
 
 
     // $ANTLR start "ruleExp"
-    // InternalMathAssignmentLanguage.g:117:1: ruleExp returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= ruleExp ) ) )? ) ;
+    // InternalMathAssignmentLanguage.g:117:1: ruleExp returns [EObject current=null] : (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* ) ;
     public final EObject ruleExp() throws RecognitionException {
         EObject current = null;
 
@@ -248,11 +248,11 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
         	enterRule();
 
         try {
-            // InternalMathAssignmentLanguage.g:123:2: ( (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= ruleExp ) ) )? ) )
-            // InternalMathAssignmentLanguage.g:124:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= ruleExp ) ) )? )
+            // InternalMathAssignmentLanguage.g:123:2: ( (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* ) )
+            // InternalMathAssignmentLanguage.g:124:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* )
             {
-            // InternalMathAssignmentLanguage.g:124:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= ruleExp ) ) )? )
-            // InternalMathAssignmentLanguage.g:125:3: this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= ruleExp ) ) )?
+            // InternalMathAssignmentLanguage.g:124:2: (this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )* )
+            // InternalMathAssignmentLanguage.g:125:3: this_Primary_0= rulePrimary ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getExpAccess().getPrimaryParserRuleCall_0());
@@ -266,95 +266,102 @@ public class InternalMathAssignmentLanguageParser extends AbstractInternalAntlrP
             			current = this_Primary_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalMathAssignmentLanguage.g:133:3: ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= ruleExp ) ) )?
-            int alt1=2;
-            int LA1_0 = input.LA(1);
+            // InternalMathAssignmentLanguage.g:133:3: ( () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) ) )*
+            loop1:
+            do {
+                int alt1=2;
+                int LA1_0 = input.LA(1);
 
-            if ( ((LA1_0>=13 && LA1_0<=16)) ) {
-                alt1=1;
-            }
-            switch (alt1) {
-                case 1 :
-                    // InternalMathAssignmentLanguage.g:134:4: () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= ruleExp ) )
-                    {
-                    // InternalMathAssignmentLanguage.g:134:4: ()
-                    // InternalMathAssignmentLanguage.g:135:5: 
-                    {
-
-                    					current = forceCreateModelElementAndSet(
-                    						grammarAccess.getExpAccess().getExpLeftAction_1_0(),
-                    						current);
-                    				
-
-                    }
-
-                    // InternalMathAssignmentLanguage.g:141:4: ( (lv_operator_2_0= ruleExpOp ) )
-                    // InternalMathAssignmentLanguage.g:142:5: (lv_operator_2_0= ruleExpOp )
-                    {
-                    // InternalMathAssignmentLanguage.g:142:5: (lv_operator_2_0= ruleExpOp )
-                    // InternalMathAssignmentLanguage.g:143:6: lv_operator_2_0= ruleExpOp
-                    {
-
-                    						newCompositeNode(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_1_0());
-                    					
-                    pushFollow(FOLLOW_4);
-                    lv_operator_2_0=ruleExpOp();
-
-                    state._fsp--;
+                if ( ((LA1_0>=13 && LA1_0<=16)) ) {
+                    alt1=1;
+                }
 
 
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getExpRule());
-                    						}
-                    						set(
-                    							current,
-                    							"operator",
-                    							lv_operator_2_0,
-                    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
-                    						afterParserOrEnumRuleCall();
-                    					
+                switch (alt1) {
+            	case 1 :
+            	    // InternalMathAssignmentLanguage.g:134:4: () ( (lv_operator_2_0= ruleExpOp ) ) ( (lv_right_3_0= rulePrimary ) )
+            	    {
+            	    // InternalMathAssignmentLanguage.g:134:4: ()
+            	    // InternalMathAssignmentLanguage.g:135:5: 
+            	    {
 
-                    }
+            	    					current = forceCreateModelElementAndSet(
+            	    						grammarAccess.getExpAccess().getExpLeftAction_1_0(),
+            	    						current);
+            	    				
 
+            	    }
 
-                    }
+            	    // InternalMathAssignmentLanguage.g:141:4: ( (lv_operator_2_0= ruleExpOp ) )
+            	    // InternalMathAssignmentLanguage.g:142:5: (lv_operator_2_0= ruleExpOp )
+            	    {
+            	    // InternalMathAssignmentLanguage.g:142:5: (lv_operator_2_0= ruleExpOp )
+            	    // InternalMathAssignmentLanguage.g:143:6: lv_operator_2_0= ruleExpOp
+            	    {
 
-                    // InternalMathAssignmentLanguage.g:160:4: ( (lv_right_3_0= ruleExp ) )
-                    // InternalMathAssignmentLanguage.g:161:5: (lv_right_3_0= ruleExp )
-                    {
-                    // InternalMathAssignmentLanguage.g:161:5: (lv_right_3_0= ruleExp )
-                    // InternalMathAssignmentLanguage.g:162:6: lv_right_3_0= ruleExp
-                    {
+            	    						newCompositeNode(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_1_0());
+            	    					
+            	    pushFollow(FOLLOW_4);
+            	    lv_operator_2_0=ruleExpOp();
 
-                    						newCompositeNode(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_2_0());
-                    					
-                    pushFollow(FOLLOW_2);
-                    lv_right_3_0=ruleExp();
-
-                    state._fsp--;
-
-
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getExpRule());
-                    						}
-                    						set(
-                    							current,
-                    							"right",
-                    							lv_right_3_0,
-                    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Exp");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
+            	    state._fsp--;
 
 
-                    }
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getExpRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"operator",
+            	    							lv_operator_2_0,
+            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
 
 
-                    }
-                    break;
+            	    }
 
-            }
+            	    // InternalMathAssignmentLanguage.g:160:4: ( (lv_right_3_0= rulePrimary ) )
+            	    // InternalMathAssignmentLanguage.g:161:5: (lv_right_3_0= rulePrimary )
+            	    {
+            	    // InternalMathAssignmentLanguage.g:161:5: (lv_right_3_0= rulePrimary )
+            	    // InternalMathAssignmentLanguage.g:162:6: lv_right_3_0= rulePrimary
+            	    {
+
+            	    						newCompositeNode(grammarAccess.getExpAccess().getRightPrimaryParserRuleCall_1_2_0());
+            	    					
+            	    pushFollow(FOLLOW_5);
+            	    lv_right_3_0=rulePrimary();
+
+            	    state._fsp--;
+
+
+            	    						if (current==null) {
+            	    							current = createModelElementForParent(grammarAccess.getExpRule());
+            	    						}
+            	    						set(
+            	    							current,
+            	    							"right",
+            	    							lv_right_3_0,
+            	    							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Primary");
+            	    						afterParserOrEnumRuleCall();
+            	    					
+
+            	    }
+
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop1;
+                }
+            } while (true);
 
 
             }

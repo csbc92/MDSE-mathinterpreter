@@ -160,9 +160,9 @@ ruleExp returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getExpAccess().getRightPrimaryParserRuleCall_1_2_0());
 					}
-					lv_right_3_0=ruleExp
+					lv_right_3_0=rulePrimary
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getExpRule());
@@ -171,12 +171,12 @@ ruleExp returns [EObject current=null]
 							$current,
 							"right",
 							lv_right_3_0,
-							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Exp");
+							"dk.chcla15.mathinterpreter.MathAssignmentLanguage.Primary");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-		)?
+		)*
 	)
 ;
 

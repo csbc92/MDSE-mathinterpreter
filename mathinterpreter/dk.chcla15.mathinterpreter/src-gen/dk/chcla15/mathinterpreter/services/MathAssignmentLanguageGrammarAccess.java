@@ -59,21 +59,21 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 		private final Assignment cOperatorAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cOperatorExpOpParserRuleCall_1_1_0 = (RuleCall)cOperatorAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cRightExpParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
+		private final RuleCall cRightPrimaryParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//Exp:
-		//	Primary ({Exp.left=current} operator=ExpOp right=Exp)?;
+		//	Primary ({Exp.left=current} operator=ExpOp right=Primary)*;
 		@Override public ParserRule getRule() { return rule; }
 		
 		////left=Primary (operator=ExpOp right=Exp)?
-		//Primary ({Exp.left=current} operator=ExpOp right=Exp)?
+		//Primary ({Exp.left=current} operator=ExpOp right=Primary)*
 		public Group getGroup() { return cGroup; }
 		
 		////left=Primary (operator=ExpOp right=Exp)?
 		//Primary
 		public RuleCall getPrimaryParserRuleCall_0() { return cPrimaryParserRuleCall_0; }
 		
-		//({Exp.left=current} operator=ExpOp right=Exp)?
+		//({Exp.left=current} operator=ExpOp right=Primary)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{Exp.left=current}
@@ -85,11 +85,11 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 		//ExpOp
 		public RuleCall getOperatorExpOpParserRuleCall_1_1_0() { return cOperatorExpOpParserRuleCall_1_1_0; }
 		
-		//right=Exp
+		//right=Primary
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
 		
-		//Exp
-		public RuleCall getRightExpParserRuleCall_1_2_0() { return cRightExpParserRuleCall_1_2_0; }
+		//Primary
+		public RuleCall getRightPrimaryParserRuleCall_1_2_0() { return cRightPrimaryParserRuleCall_1_2_0; }
 	}
 	public class ExpOpElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.chcla15.mathinterpreter.MathAssignmentLanguage.ExpOp");
@@ -261,7 +261,7 @@ public class MathAssignmentLanguageGrammarAccess extends AbstractGrammarElementF
 	}
 	
 	//Exp:
-	//	Primary ({Exp.left=current} operator=ExpOp right=Exp)?;
+	//	Primary ({Exp.left=current} operator=ExpOp right=Primary)*;
 	public ExpElements getExpAccess() {
 		return pExp;
 	}

@@ -118,9 +118,10 @@ public class MathAssignmentLanguageSemanticSequencer extends AbstractDelegatingS
 	/**
 	 * Contexts:
 	 *     Exp returns Exp
+	 *     Exp.Exp_1_0 returns Exp
 	 *
 	 * Constraint:
-	 *     (left=Exp_Exp_1_0 operator=ExpOp right=Exp)
+	 *     (left=Exp_Exp_1_0 operator=ExpOp right=Primary)
 	 */
 	protected void sequence_Exp(ISerializationContext context, Exp semanticObject) {
 		if (errorAcceptor != null) {
@@ -134,7 +135,7 @@ public class MathAssignmentLanguageSemanticSequencer extends AbstractDelegatingS
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getExpAccess().getExpLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getExpAccess().getOperatorExpOpParserRuleCall_1_1_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.accept(grammarAccess.getExpAccess().getRightPrimaryParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	

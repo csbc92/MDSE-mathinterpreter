@@ -329,7 +329,7 @@ rule__Exp__Group__1__Impl
 :
 (
 	{ before(grammarAccess.getExpAccess().getGroup_1()); }
-	(rule__Exp__Group_1__0)?
+	(rule__Exp__Group_1__0)*
 	{ after(grammarAccess.getExpAccess().getGroup_1()); }
 )
 ;
@@ -833,9 +833,9 @@ rule__Exp__RightAssignment_1_2
 	}
 :
 	(
-		{ before(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_2_0()); }
-		ruleExp
-		{ after(grammarAccess.getExpAccess().getRightExpParserRuleCall_1_2_0()); }
+		{ before(grammarAccess.getExpAccess().getRightPrimaryParserRuleCall_1_2_0()); }
+		rulePrimary
+		{ after(grammarAccess.getExpAccess().getRightPrimaryParserRuleCall_1_2_0()); }
 	)
 ;
 finally {

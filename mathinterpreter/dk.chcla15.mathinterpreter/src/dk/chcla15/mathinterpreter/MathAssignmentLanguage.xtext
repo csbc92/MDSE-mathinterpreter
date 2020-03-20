@@ -8,7 +8,7 @@ MathExp:
 
 Exp:
 	//left=Primary (operator=ExpOp right=Exp)?
-	Primary ({Exp.left=current} operator=ExpOp right=Exp)?
+	Primary ({Exp.left=current} operator=ExpOp right=Primary)*
 ;
 
 ExpOp:
