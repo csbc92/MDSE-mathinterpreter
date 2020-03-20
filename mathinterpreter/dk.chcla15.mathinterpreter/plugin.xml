@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.chcla15.dk/mathinterpreter/MathAssignmentLanguage"
+			class = "dk.chcla15.mathinterpreter.mathAssignmentLanguage.MathAssignmentLanguagePackage"
+			genModel = "model/generated/MathAssignmentLanguage.genmodel" />
+	</extension>
+</plugin>

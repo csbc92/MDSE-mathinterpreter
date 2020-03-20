@@ -1,0 +1,27 @@
+grammar dk.chcla15.mathinterpreter.MathAssignmentLanguage with org.eclipse.xtext.common.Terminals
+
+generate mathAssignmentLanguage "http://www.chcla15.dk/mathinterpreter/MathAssignmentLanguage"
+
+MathExp:
+	'result' 'is' exp=Exp
+;
+
+Exp:
+	left=Primary (operator=ExpOp right=Exp)?
+;
+
+ExpOp:
+	{Plus} '+' | {Minus} '-'	 | {Mult} '*' | {Div} '/'	
+;
+
+Primary:
+	Number | Parenthesis
+;
+
+Parenthesis:
+	'(' exp=Exp ')'
+;
+
+Number:
+	value=INT
+;
